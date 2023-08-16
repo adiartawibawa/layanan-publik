@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('desc');
             $table->enum('type', ['formulir', 'prasyarat'])->nullable();
-            $table->boolean('is_required')->default(1)->change();
+            $table->boolean('is_required')->default(false);
         });
     }
 

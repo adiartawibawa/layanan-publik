@@ -39,6 +39,7 @@
             'blue' => 'bg-blue-500',
             'orange' => 'bg-orange-500',
             'purple' => 'bg-purple-500',
+            'indigo' => 'bg-indigo-500',
             'cyan' => 'bg-cyan-500',
             'pink' => 'bg-pink-500',
             'black' => 'bg-black',
@@ -50,6 +51,7 @@
             'blue' => 'focus:ring-blue-500',
             'orange' => 'focus:ring-orange-500',
             'purple' => 'focus:ring-purple-500',
+            'indigo' => 'focus:ring-indigo-500',
             'cyan' => 'focus:ring-cyan-500',
             'pink' => 'focus:ring-pink-500',
             'black' => 'focus:ring-black',
@@ -61,6 +63,7 @@
             'blue' => 'hover:bg-blue-700 active:bg-blue-700',
             'orange' => 'hover:bg-orange-700 active:bg-orange-700',
             'purple' => 'hover:bg-purple-700 active:bg-purple-700',
+            'indigo' => 'hover:bg-indigo-700 active:bg-indigo-700',
             'cyan' => 'hover:bg-cyan-700 active:bg-cyan-700',
             'pink' => 'hover:bg-pink-700 active:bg-pink-700',
             'black' => 'hover:bg-black active:bg-black',
@@ -74,7 +77,7 @@
     $hasSpinner = filter_var($hasSpinner, FILTER_VALIDATE_BOOLEAN);
     $can_submit = filter_var($can_submit, FILTER_VALIDATE_BOOLEAN);
     $canSubmit = filter_var($canSubmit, FILTER_VALIDATE_BOOLEAN);
-    
+
     if ($showSpinner) {
         $show_spinner = $showSpinner;
     }
@@ -84,7 +87,7 @@
     if ($canSubmit) {
         $can_submit = $canSubmit;
     }
-    
+
     $button_type = $can_submit ? 'submit' : 'button';
     $spinner_css = !$show_spinner ? 'hidden' : '!-mr-2 ml-2';
     $primary_colour = $type === 'primary' ? $colouring['bg'][$color] . ' ' . $colouring['focus'][$color] . ' ' . $colouring['hover_active'][$color] : '';

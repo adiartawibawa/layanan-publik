@@ -12,11 +12,15 @@ class Ketentuan extends Model
         'name',
         'desc',
         'type',
-        'is_required'
+        'is_required',
+        'ketentuan_type',
+        'ketentuan_id',
     ];
+
+    public $timestamps = false;
 
     public function ketentuan()
     {
-        return $this->morphTo('ketentuan');
+        return $this->morphTo('ketentuan', 'ketentuan_type', 'ketentuan_id');
     }
 }

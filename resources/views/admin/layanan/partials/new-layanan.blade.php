@@ -70,11 +70,11 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <x-secondary-button x-on:click="$dispatch('close')">
+                <x-button type="secondary" size="small" x-on:click="$dispatch('close')">
                     {{ __('Batal') }}
-                </x-secondary-button>
+                </x-button>
 
-                <x-button can_submit="true" class="ml-3">
+                <x-button can_submit="true" class="ml-3" size="small">
                     {{ __('Tambahkan') }}
                 </x-button>
             </div>
