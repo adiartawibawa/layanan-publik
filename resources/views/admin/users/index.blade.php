@@ -71,23 +71,27 @@
                             <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
                                 <div class="inline-flex items-center justify-center gap-2">
-                                    <button x-data=""
-                                        x-on:click.prevent="$dispatch('open-modal', 'edit-pengguna')">
-                                        <x-icon name="pencil-square"
-                                            class="h-5 w-5 cursor-pointer hover:text-indigo-800" />
-                                    </button>
-                                    <button x-data=""
-                                        x-on:click.prevent="$dispatch('open-modal', 'lihat-pengguna')">
-                                        <x-icon name="eye" class="h-5 w-5 cursor-pointer hover:text-indigo-800" />
-                                    </button>
-                                    <form action="{{ route('admin.users.destroy', ['user' => $item->id]) }}"
-                                        method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="bg-transparent">
-                                            <x-icon name="trash" class="h-5 w-5 cursor-pointer hover:text-rose-800" />
+                                    @if ($item->show_edit_remove_btn)
+                                        <button x-data=""
+                                            x-on:click.prevent="$dispatch('open-modal', 'lihat-pengguna')">
+                                            <x-icon name="eye"
+                                                class="h-5 w-5 cursor-pointer hover:text-indigo-800" />
                                         </button>
-                                    </form>
+                                        <button x-data=""
+                                            x-on:click.prevent="$dispatch('open-modal', 'edit-pengguna')">
+                                            <x-icon name="pencil-square"
+                                                class="h-5 w-5 cursor-pointer hover:text-indigo-800" />
+                                        </button>
+                                        <form action="{{ route('admin.users.destroy', ['user' => $item->id]) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-transparent">
+                                                <x-icon name="trash"
+                                                    class="h-5 w-5 cursor-pointer hover:text-rose-800" />
+                                            </button>
+                                        </form>
+                                    @endif
                                 </div>
                             </td>
                         </tr>
@@ -95,7 +99,7 @@
                         <p>Belum ada pengguna yang terdaftar</p>
                     @endforelse
                 </x-table>
-                <div class="pt-8">{!! $users->withQueryString()->links() !!}</div>
+                {{-- <div class="pt-8">{!! $users->withQueryString()->links() !!}</div> --}}
             </x-card>
         </div>
     </div>
@@ -123,6 +127,14 @@
                 <x-input label="Password Pengguna" name="password" type="password" required="true" viewable="true"
                     suffix="eye" value="{{ old('password') }}" autofocus />
                 <x-input-error :messages="$errors->get('password')" class="mt-1" />
+            </div>
+            <div class="mt-4">
+                <x-input label="Ulangi Password Pengguna" name="password_confirmation" type="password" required="true"
+                    viewable="true" suffix="eye" value="" autofocus />
+                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" />
+            </div>
+            <div class="mt-4">
+                <x-checkbox name="is_admin" label="Jadikan Admin" />
             </div>
 
             <div class="mt-6 flex justify-end">

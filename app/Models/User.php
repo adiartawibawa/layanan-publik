@@ -54,6 +54,15 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'current_role_id');
     }
 
+    public function getShowEditRemoveBtnAttribute()
+    {
+        if (($this->id == auth()->user()->id) or $this->hasRole(\App\Models\Role::ADMIN)) {
+            return false;
+        }
+
+        return true;
+    }
+
     public function permohonans(): HasMany
     {
         return $this->hasMany(Permohonan::class, 'user_id');
