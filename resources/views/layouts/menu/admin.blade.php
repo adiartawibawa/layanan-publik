@@ -7,7 +7,7 @@
 <x-nav-link :href="route('admin.setting')" :active="request()->routeIs('admin.setting')">
     {{ __('Notifikasi') }}
 </x-nav-link>
-<x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+<x-nav-link :href="route('admin.users.index')" :active="request()->is('admin/users*')">
     {{ __('Manajemen Pengguna') }}
 </x-nav-link>
 <x-nav-link :href="route('admin.setting')" :active="request()->routeIs('admin.setting')">

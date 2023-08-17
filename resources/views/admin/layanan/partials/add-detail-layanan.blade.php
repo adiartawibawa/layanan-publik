@@ -9,13 +9,20 @@
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <x-card title="Jenis Layanan">
-                    <div class="w-full space-y-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-full space-y-2">
 
-                        <h3 class="font-semibold text-2xl text-gray-900">{{ $item->name }}</h3>
-                        <p class="text-sm text-gray-500">Estimasi waktu layanan : <span
-                                class="text-indigo-500">{{ $item->estimasi }} hari kerja</span></p>
-                        <p class="text-sm text-gray-900">{{ $item->desc }}</p>
+                            <h3 class="font-semibold text-2xl text-gray-900">{{ $item->name }}</h3>
+                            <p class="text-sm text-gray-500">Estimasi waktu layanan : <span
+                                    class="text-indigo-500">{{ $item->estimasi }} hari kerja</span></p>
+                            <p class="text-sm text-gray-900">{{ $item->desc }}</p>
 
+                        </div>
+                        <a href="{{ route('admin.pelayanan') }}"
+                            class="inline-flex justify-center items-center space-x-2 text-xs hover:cursor-pointer hover:text-indigo-500">
+                            <x-icon name="arrow-left" class="h-4 w-4" />
+                            <span>Kembali</span>
+                        </a>
                     </div>
                 </x-card>
 
