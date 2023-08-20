@@ -5,7 +5,9 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Data layanan yang masuk pada aplikasi') }}
+            {{ __('Halaman yang digunakan untuk pengelolaan layanan publik secara efisien. Mengatur
+                        permintaan, memantau status, dan memberikan respons yang cepat untuk meningkatkan
+                        pelayanan dan kepuasan pengguna.') }}
         </p>
     </header>
 
@@ -86,7 +88,7 @@
             @method('delete')
 
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                {{ __('View Layanan?') }}
+                {{ __('View Layanan') }}
             </h2>
 
             <div class="mt-6 flex justify-end">
