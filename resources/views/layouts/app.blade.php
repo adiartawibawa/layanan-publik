@@ -15,6 +15,9 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="{{ asset('js/helpers.js') }}"></script>
+
+    @livewireStyles
+
 </head>
 
 <body class="font-sans antialiased">
@@ -35,6 +38,9 @@
             {{ $slot }}
         </main>
     </div>
+
+    @livewireScripts
+
 </body>
 
 </html>
