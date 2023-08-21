@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LayananController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/pelayanan/detail/{layanan}', [LayananController::class, 'addDetailLayanan'])->name('detail.pelayanan.add');
     Route::delete('/pelayanan/detail/{layanan}/{ketentuan}', [LayananController::class, 'deleteDetailLayanan'])->name('detail.pelayanan.destroy');
 
-    Route::get('/setting', function () {
-        return view('admin.setting.index');
-    })->name('setting');
+    Route::get('setting/remove/{id}', [SettingController::class, 'remove'])->name('setting.update');
+    Route::get('setting', [SettingController::class, 'index'])->name('setting.update');
+    Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
 });

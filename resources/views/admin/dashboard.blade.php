@@ -58,7 +58,7 @@
                     <span
                         class="absolute top-10 z-0 h-20 w-20 rounded-full bg-indigo-500 transition-all duration-300 group-hover:scale-[10]"></span>
                     <div class="relative z-10 mx-auto max-w-md">
-                        <a href="{{ route('admin.setting') }}">
+                        <a href="{{ route('admin.setting.update') }}">
                             <span
                                 class="grid h-20 w-20 place-items-center rounded-full bg-indigo-500 transition-all duration-300 group-hover:bg-indigo-400">
                                 <x-icon name="cog-8-tooth" class="h-10 w-10 text-white transition-all"></x-icon>
