@@ -21,6 +21,7 @@ class SettingController extends Controller
         $this->data['settings'] = Setting::getSettings()[$currentCategory];
         $this->data['categories'] = Setting::getCategories();
 
+        // dd($this->data);
 
         return view('admin.setting.index', $this->data);
     }
