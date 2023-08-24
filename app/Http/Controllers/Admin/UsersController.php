@@ -19,9 +19,11 @@ class UsersController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $roleToFilter = Role::ROOT;
+
+        $search = $request->input('search');
 
         $users = User::whereDoesntHave('roles', function ($query) use ($roleToFilter) {
             $query->where('name', $roleToFilter);
@@ -30,6 +32,9 @@ class UsersController extends Controller
             ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
             ->orderBy('roles.name', 'asc')
             ->select('users.*')
+            ->when($request->has('search'), function ($query) use ($search) {
+                $query->where('users.name', 'LIKE', '%' . $search . '%');
+            })
             ->paginate($this->perPage);
 
         return view('admin.users.index', compact('users'));
