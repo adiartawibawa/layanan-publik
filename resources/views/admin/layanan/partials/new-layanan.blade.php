@@ -22,6 +22,9 @@
                     <a href="{{ route('admin.detail.pelayanan', $layanan->id) }}"
                         class="block hover:shadow-lg hover:shadow-indigo-300">
                         <x-card title="{{ $layanan->name }}">
+                            <div class="w-full inline-flex items-center">
+                                <x-icon name="trash" class="h-4 w-4 text-red-500"></x-icon>
+                            </div>
                             <div
                                 class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
                                 <p>{{ Str::limit($layanan->desc, 100, '...') }}

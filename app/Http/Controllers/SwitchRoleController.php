@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SwitchRoleController extends Controller
 {
@@ -13,6 +14,6 @@ class SwitchRoleController extends Controller
 
         auth()->user()->update(['current_role_id' => $role->id]);
 
-        return to_route('dashboard'); // Replace this with your own home route
+        return to_route(Auth::user()->getRedirectRoute()); // Replace this with your own home route
     }
 }

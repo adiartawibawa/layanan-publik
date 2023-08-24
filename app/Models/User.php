@@ -54,6 +54,15 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'current_role_id');
     }
 
+    public function getRedirectRoute()
+    {
+        return match ((int)$this->current_role_id) {
+            1 => 'root.dashboard',
+            2 => 'admin.dashboard',
+            3 => 'dashboard',
+        };
+    }
+
     public function getShowEditRemoveBtnAttribute()
     {
         if (($this->id == auth()->user()->id) or $this->hasRole(\App\Models\Role::ADMIN)) {
