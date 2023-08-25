@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <meta name="description" content="{{ $setting['app_description'] }}">
+    <title>{{ $setting['application_name'] }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -21,19 +21,19 @@
 </head>
 
 <body class="antialiased">
-
     @include('layouts.landing.header')
 
     @include('layouts.landing.hero')
 
-    @include('layouts.landing.our-app')
+    @include('layouts.landing.permohonan')
 
-    {{-- @include('layouts.landing.team') --}}
+    @include('layouts.landing.panduan')
 
     <section class="bg-gray-50 dark:bg-gray-900">
         <div class="gap-16 items-center py-8 px-4 mx-auto max-w-screen-xl lg:grid lg:grid-cols-2 lg:py-16 lg:px-6">
             <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
-                <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">We didn't reinvent the wheel
+                <h2 class="mb-4 text-4xl font-extrabold text-gray-900 dark:text-white">
+                    Mari daftarkan permohonan berkas melalui {{ $setting['application_name'] }}
                 </h2>
                 <p class="mb-4">We are strategists, designers and developers. Innovators and problem solvers. Small
                     enough to be simple and quick, but big enough to deliver the scope you want at the pace you need.
@@ -55,11 +55,10 @@
         </div>
     </section>
 
-    {{-- <section class="bg-gray-50 dark:bg-gray-900 dark:bg-gray-800">
+    <section class="bg-white dark:bg-gray-900 dark:bg-gray-800">
         <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div class="max-w-screen-lg text-gray-500 sm:text-lg dark:text-gray-400">
-                <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Powering innovation at <span
-                        class="font-extrabold">200,000+</span> companies worldwide</h2>
+                <h2 class="mb-4 text-4xl font-bold text-gray-900 dark:text-white">Statistik Pelayanan Kami</h2>
                 <p class="mb-4 font-light">Track work across the enterprise through an open, collaborative platform.
                     Link
                     issues across Jira and ingest data from other software development tools, so your IT support and
@@ -70,7 +69,7 @@
                     ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease.
                 </p>
                 <a href="#"
-                    class="inline-flex items-center font-medium text-blue-600 hover:text-blue-800 dark:text-blue-500 dark:hover:text-blue-700">
+                    class="inline-flex items-center font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-500 dark:hover:text-indigo-700">
                     Learn more
                     <svg class="ml-1 w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -81,20 +80,21 @@
                 </a>
             </div>
         </div>
-    </section> --}}
+    </section>
 
-    <section class="bg-white dark:bg-gray-900">
+    <section class="bg-gray-50 dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div class="mx-auto max-w-screen-sm text-center">
-                <h2 class="mb-4 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">Start your free
-                    trial
-                    today</h2>
-                <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">Try Flowbite Platform for 30
-                    days.
-                    No credit card required.</p>
+                <h2 class="mb-4 text-4xl font-extrabold leading-tight text-gray-900 dark:text-white">
+                    Ajukan Permohonan Sekarang
+                </h2>
+                <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, optio.
+                </p>
                 <a href="#"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Free
-                    trial for 30 days</a>
+                    class="text-white bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-indigo-600 dark:hover:bg-indigo-700 focus:outline-none dark:focus:ring-indigo-800">
+                    Ajukan Permohonan
+                </a>
             </div>
         </div>
     </section>
