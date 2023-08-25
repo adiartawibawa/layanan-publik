@@ -11,10 +11,10 @@
                 <div class="flex items-center lg:order-2">
                     @auth
                         <a href="{{ route(Auth::user()->getRedirectRoute()) }}"
-                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0">Dashboard</a>
+                            class="block py-2 pr-4 pl-3 text-gray-700 border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}"
-                            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0">Log
+                            class="block py-2 pr-4 pl-3 text-gray-700 border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0">Log
                             in</a>
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}"
