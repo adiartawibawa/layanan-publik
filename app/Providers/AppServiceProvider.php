@@ -21,5 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('layouts.landing.main', AppSettingComposer::class);
+        view()->composer('layouts.landing.hero', AppSettingComposer::class);
+        view()->composer('welcome', AppSettingComposer::class);
     }
 }

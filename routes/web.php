@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LayananController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SwitchRoleController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('landing');
+
+Route::view('/panduan/registrasi', 'page.panduan-registrasi')->name('panduan.registrasi');
+Route::view('/panduan/permohonan', 'page.panduan-permohonan')->name('panduan.permohonan');
+Route::view('/panduan/ambil-berkas', 'page.panduan-ambil-berkas')->name('panduan.berkas');
+Route::view('/check/permohonan', 'page.cek-permohonan')->name('cek.permohonan');
+Route::get('/daftar-layanan', [LayananController::class, 'layanan'])->name('daftar.layanan');
 
 Route::middleware('auth', 'verified')->group(function () {
 
