@@ -1,5 +1,5 @@
 <x-landing-layout>
-    <section class="bg-white dark:bg-gray-900" id="panduan">
+    <section class="bg-gray-50 dark:bg-gray-900" id="panduan">
         <div class="py-8 lg:py-16 mx-auto max-w-screen-xl px-4">
             <h2
                 class="mb-8 lg:mb-16 text-3xl font-extrabold tracking-tight leading-tight text-center text-gray-900 dark:text-white md:text-4xl">
@@ -8,7 +8,7 @@
             <div class="mx-auto mb-20 max-w-5xl">
                 <!-- direction flex row reverse  -->
                 <div class="flex flex-col-reverse w-full md:flex-row-reverse items-start justify-end gap-4">
-                    <div class="flex w-full md:w-1/2 items-start gap-4">
+                    <div class="flex w-full md:w-1/2 items-start gap-4  bg-white px-6 pt-6 pb-10 rounded-lg shadow-xl">
                         <div class="rounded-full bg-indigo-500 px-4 py-2 text-white">1</div>
                         <div class="text-slate-600">
                             <div class="text-2xl font-bold">Nusa Penida</div>
@@ -37,7 +37,7 @@
 
                 <!-- direction flex row  -->
                 <div class="flex flex-col-reverse w-full md:flex-row items-start justify-end gap-4">
-                    <div class="flex w-full md:w-1/2 items-start gap-4">
+                    <div class="flex w-full md:w-1/2 items-start gap-4  bg-white px-6 pt-6 pb-10 rounded-lg shadow-xl">
                         <div class="rounded-full bg-indigo-500 px-4 py-2 text-white">2</div>
                         <div class="text-slate-600">
                             <div class="text-2xl font-bold">Danu Beratan</div>
@@ -65,7 +65,7 @@
 
                 <!-- direction flex row reverse  -->
                 <div class="flex flex-col-reverse w-full md:flex-row-reverse items-start justify-end gap-4">
-                    <div class="flex w-full md:w-1/2 items-start gap-4">
+                    <div class="flex w-full md:w-1/2 items-start gap-4  bg-white px-6 pt-6 pb-10 rounded-lg shadow-xl">
                         <div class="rounded-full bg-indigo-500 px-4 py-2 text-white">3</div>
                         <div class="text-slate-600">
                             <div class="text-2xl font-bold">Barong Dance</div>
