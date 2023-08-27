@@ -19,6 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/panduan/registrasi', 'page.panduan-registrasi')->name('panduan.registrasi');
+Route::view('/panduan/permohonan', 'page.panduan-permohonan')->name('panduan.permohonan');
+Route::view('/panduan/ambil-berkas', 'page.panduan-ambil-berkas')->name('panduan.berkas');
+Route::view('/check/permohonan', 'page.cek-permohonan')->name('cek.permohonan');
+Route::view('/daftar-layanan', 'page.daftar-layanan')->name('daftar.layanan');
+
 Route::middleware('auth', 'verified')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
