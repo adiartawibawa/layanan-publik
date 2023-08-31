@@ -25,9 +25,8 @@
                                 <p class="mt-5 text-xs text-gray-600">
                                     Estimasi waktu layanan
                                     <span class="text-xs text-indigo-600 transition duration-500 ease-in-out">
-                                        {{ $item->estimasi }}
+                                        {{ $item->estimasi }} Hari
                                     </span>
-                                    Hari
                                 </p>
                             </div>
                         </div>
@@ -187,7 +186,8 @@
                                         {{ __('Kembali') }}
                                     </x-button>
 
-                                    <x-button can_submit="true" color="indigo" class="ml-3" size="small">
+                                    <x-button tag="a" href="{{ route('permohonan.create') }}" color="indigo"
+                                        class="ml-3" size="small">
                                         {{ __('Ajukan Permohonan') }}
                                     </x-button>
                                 </div>
