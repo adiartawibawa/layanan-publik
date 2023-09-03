@@ -15,11 +15,11 @@ class LayananController extends Controller
         $this->data['layanans'] = Layanan::get();
 
         $this->data['syarat'] = Ketentuan::whereHasMorph('ketentuan', [Layanan::class], function ($query) {
-            $query->where('type', '=', 'prasyarat');
+            $query->where('category', '=', 'prasyarat');
         })->get();
 
         $this->data['formulir'] = Ketentuan::whereHasMorph('ketentuan', [Layanan::class], function ($query) {
-            $query->where('type', '=', 'formulir');
+            $query->where('category', '=', 'formulir');
         })->get();
 
         return view('page.daftar-layanan', $this->data);

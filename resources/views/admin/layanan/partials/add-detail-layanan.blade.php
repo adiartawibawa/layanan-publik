@@ -37,7 +37,7 @@
                             <th>Pemohon akan mengisi formulir :</th>
                         </x-slot>
                         @forelse ($item->ketentuans as $ketentuan)
-                            @if ($ketentuan->type == 'formulir')
+                            @if ($ketentuan->category == 'formulir')
                                 <tr>
                                     <td class="flex items-start justify-between">
                                         <div>
@@ -86,7 +86,7 @@
                                 copy) :</th>
                         </x-slot>
                         @forelse ($item->ketentuans as $ketentuan)
-                            @if ($ketentuan->type == 'prasyarat')
+                            @if ($ketentuan->category == 'prasyarat')
                                 <tr>
                                     <td class="flex items-start justify-between">
                                         <div>
@@ -136,7 +136,7 @@
                     {{ __('Silahkan tambahkan formulir layanan yang harus disiapkan') }}
                 </p>
 
-                <input label="Tipe" name="type" type="hidden" value="formulir" />
+                <input label="Tipe" name="category" type="hidden" value="formulir" />
 
                 <div class="mt-6">
                     <x-input label="Nama Formulir" name="name" required="true" value="{{ old('name') }}"
@@ -147,6 +147,15 @@
                     <x-textarea label="Deskripsi Formulir" name="desc" required="true" value="{{ old('desc') }}"
                         autofocus />
                     <x-input-error :messages="$errors->get('desc')" class="mt-1" />
+                </div>
+                <div class="mt-4">
+                    <select id="type" name="type"
+                        class="border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Tipe Formulir</option>
+                        <option value="text">Jawaban singkat</option>
+                        <option value="textarea">Paragraf</option>
+                        <option value="file">Upload file</option>
+                    </select>
                 </div>
                 <div class="mt-4">
                     <x-toggle label="Wajib" label_position="right" name="is_required"></x-toggle>
@@ -175,7 +184,7 @@
                     {{ __('Silahkan tambahkan syarat layanan yang harus disiapkan') }}
                 </p>
 
-                <input label="Tipe" name="type" type="hidden" value="prasyarat" />
+                <input label="Tipe" name="category" type="hidden" value="prasyarat" />
 
                 <div class="mt-6">
                     <x-input label="Nama Syarat" name="name" required="true" value="{{ old('name') }}"
@@ -186,6 +195,15 @@
                     <x-textarea label="Deskripsi Syarat" name="desc" required="true" value="{{ old('desc') }}"
                         autofocus />
                     <x-input-error :messages="$errors->get('desc')" class="mt-1" />
+                </div>
+                <div class="mt-4">
+                    <select id="type" name="type"
+                        class="border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option selected>Tipe Formulir</option>
+                        <option value="text">Jawaban singkat</option>
+                        <option value="textarea">Paragraf</option>
+                        <option value="file">Upload file</option>
+                    </select>
                 </div>
                 <div class="mt-4">
                     <x-toggle label="Wajib" label_position="right" name="is_required"></x-toggle>

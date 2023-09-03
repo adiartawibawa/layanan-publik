@@ -186,8 +186,8 @@
                                     {{ __('Kembali') }}
                                 </x-button>
 
-                                <x-button tag="a" href="{{ route('permohonan.create') }}" color="indigo"
-                                    class="ml-3" size="small">
+                                <x-button tag="a" href="{{ route('permohonan.show', $item->id) }}"
+                                    color="indigo" class="ml-3" size="small">
                                     {{ __('Ajukan Permohonan') }}
                                 </x-button>
                             </div>

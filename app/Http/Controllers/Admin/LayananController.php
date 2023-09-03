@@ -42,6 +42,7 @@ class LayananController extends Controller
         $ketentuan = Ketentuan::create([
             'name' => $request->get('name'),
             'desc' => $request->get('desc'),
+            'category' => $request->get('category'),
             'type' => $request->get('type'),
             'is_required' => $request->get('is_required') == 'on' ? 1 : 0,
             'ketentuan_id' => $layanan->id,

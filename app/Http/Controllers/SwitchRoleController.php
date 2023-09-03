@@ -14,6 +14,6 @@ class SwitchRoleController extends Controller
 
         auth()->user()->update(['current_role_id' => $role->id]);
 
-        return to_route(Auth::user()->getRedirectRoute()); // Replace this with your own home route
+        return redirect(Auth::user()->getRedirectRoute()); // Replace this with your own home route
     }
 }

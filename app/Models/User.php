@@ -57,8 +57,8 @@ class User extends Authenticatable
     public function getRedirectRoute()
     {
         return match ((int)$this->current_role_id) {
-            1 => 'root.dashboard',
-            2 => 'admin.dashboard',
+            1 => 'root/dashboard',
+            2 => 'admin/dashboard',
             3 => 'dashboard',
         };
     }

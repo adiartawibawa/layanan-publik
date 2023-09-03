@@ -2,15 +2,28 @@
 
 namespace App\Models;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Ketentuan extends Model
 {
+    use Sluggable;
+
     protected $table = 'ketentuan';
+
+    public function sluggable(): array
+    {
+        return [
+            'key' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 
     protected $fillable = [
         'name',
         'desc',
+        'category',
         'type',
         'is_required',
         'ketentuan_type',

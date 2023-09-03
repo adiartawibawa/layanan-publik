@@ -18,11 +18,11 @@ class PermohonanController extends Controller
         $this->data['layanans'] = Layanan::get();
 
         $this->data['syarat'] = Ketentuan::whereHasMorph('ketentuan', [Layanan::class], function ($query) {
-            $query->where('type', '=', 'prasyarat');
+            $query->where('category', '=', 'prasyarat');
         })->get();
 
         $this->data['formulir'] = Ketentuan::whereHasMorph('ketentuan', [Layanan::class], function ($query) {
-            $query->where('type', '=', 'formulir');
+            $query->where('category', '=', 'formulir');
         })->get();
 
         return view('permohonan.index', $this->data);
@@ -31,9 +31,9 @@ class PermohonanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Layanan $layanan)
     {
-        return view('permohonan.create');
+        //
     }
 
     /**
@@ -47,9 +47,10 @@ class PermohonanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($layanan)
     {
-        //
+        $layanan = Layanan::findOrFail($layanan);
+        return view('permohonan.create', compact('layanan'));
     }
 
     /**

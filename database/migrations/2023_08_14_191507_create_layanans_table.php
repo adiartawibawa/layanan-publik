@@ -23,8 +23,10 @@ return new class extends Migration
             $table->uuidMorphs('ketentuan');
             $table->string('name');
             $table->text('desc');
-            $table->enum('type', ['formulir', 'prasyarat'])->nullable();
+            $table->enum('category', ['formulir', 'prasyarat'])->nullable();
             $table->boolean('is_required')->default(false);
+            $table->string('type')->index();
+            $table->string('key')->unique();
         });
     }
 
