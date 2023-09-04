@@ -3,7 +3,8 @@
     <nav>
         <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
             <a href="/" class="flex items-center">
-                <img src="{{ $setting['app_logo'] }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                <img src="{{ $setting['app_logo'] }}" class="mr-3 h-6 sm:h-9"
+                    alt="{{ $setting['application_name'] }} logo" />
                 <span
                     class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ $setting['application_name'] }}</span>
             </a>

@@ -1,8 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Ajuan Permohonan') }} {{ $layanan->name }}
-        </h2>
+        <div class="flex flex-row items-center justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                {{ __('Ajuan Permohonan') }} {{ $layanan->name }}
+            </h2>
+            <div class="text-xs text-gray-600">
+                <a href="{{ route('permohonan.index') }}">
+                    <x-icon class="h-6 w-6" name="arrow-left-circle"></x-icon>
+                    <span>Kembali</span>
+                </a>
+            </div>
+        </div>
     </x-slot>
 
     <div class="py-12">
@@ -59,6 +67,8 @@
                         </div>
 
                         <div class="relative flex flex-col">
+                            {!! Form::open(['route' => 'permohonan.store', 'method' => 'POST']) !!}
+                            @csrf
                             <!-- Panel #1 -->
                             <div id="tabpanel-1" class="p-4 dark:bg-gray-800" x-show="activeTab === 1" role="tabpanel"
                                 aria-labelledby="tab-1"
@@ -75,7 +85,8 @@
                                         @include('permohonan.form-formulir', [$layanan])
 
                                         <div class="flex items-center justify-end w-full gap-2">
-                                            <x-button size="small" type="secondary">selanjutnya</x-button>
+                                            <x-button size="small" type="secondary"
+                                                @click="activeTab = 2">selanjutnya</x-button>
                                         </div>
                                     </x-table>
                                 </div>
@@ -96,12 +107,14 @@
                                     <x-table striped="true" divider="thin">
                                         @include('permohonan.form-syarat', [$layanan])
                                         <div class="flex items-center justify-end w-full gap-2">
-                                            <x-button size="small" type="secondary">sebelumnya</x-button>
-                                            <x-button size="small" color="indigo">Ajukan</x-button>
+                                            <x-button size="small" type="secondary"
+                                                @click="activeTab = 1">sebelumnya</x-button>
+                                            <x-button size="small" can_submit="true" color="indigo">Ajukan</x-button>
                                         </div>
                                     </x-table>
                                 </div>
                             </div>
+                            {!! Form::close() !!}
                         </div>
 
                     </div>

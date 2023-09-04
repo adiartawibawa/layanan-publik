@@ -77,7 +77,7 @@
     $hasSpinner = filter_var($hasSpinner, FILTER_VALIDATE_BOOLEAN);
     $can_submit = filter_var($can_submit, FILTER_VALIDATE_BOOLEAN);
     $canSubmit = filter_var($canSubmit, FILTER_VALIDATE_BOOLEAN);
-
+    
     if ($showSpinner) {
         $show_spinner = $showSpinner;
     }
@@ -87,7 +87,7 @@
     if ($canSubmit) {
         $can_submit = $canSubmit;
     }
-
+    
     $button_type = $can_submit ? 'submit' : 'button';
     $spinner_css = !$show_spinner ? 'hidden' : '!-mr-2 ml-2';
     $primary_colour = $type === 'primary' ? $colouring['bg'][$color] . ' ' . $colouring['focus'][$color] . ' ' . $colouring['hover_active'][$color] : '';
