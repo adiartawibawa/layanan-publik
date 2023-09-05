@@ -15,6 +15,7 @@ class Ketentuan extends Model
     {
         return [
             'key' => [
+                'separator' => '_',
                 'source' => 'name'
             ]
         ];

@@ -41,7 +41,23 @@ class PermohonanController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        $params = $request->except('_token');
+
+        $tambahPermohonan = true;
+        $permohonanKeys = Ketentuan::whereIn('key', array_keys($params))->get()->pluck('key')->toArray();
+
+        if ($params) {
+            foreach ($params as $permohonanKey => $permohonanValue) {
+                if (in_array($permohonanKey, $permohonanKeys) && !$this->savePermohonan($permohonanKey, $permohonanValue)) {
+                    $tambahPermohonan = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    private function savePermohonan($permohonanKey, $permohonanValue)
+    {
     }
 
     /**
