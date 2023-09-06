@@ -6,8 +6,8 @@
 
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __('Halaman yang digunakan untuk pengelolaan layanan publik secara efisien. Mengatur
-                        permintaan, memantau status, dan memberikan respons yang cepat untuk meningkatkan
-                        pelayanan dan kepuasan pengguna.') }}
+                                                                        permintaan, memantau status, dan memberikan respons yang cepat untuk meningkatkan
+                                                                        pelayanan dan kepuasan pengguna.') }}
         </p>
     </header>
 
@@ -21,9 +21,9 @@
                     <th>Aksi</th>
                 </x-slot>
                 <tr>
-                    <td>Leglisir Ijazah</td>
-                    <td>{{ Str::random(8) }}</td>
-                    <td>Baru</td>
+                    <td>{{ $item->layanan->name }}</td>
+                    <td>{{ $item->kode_mohon }}</td>
+                    <td>{{ $item->is_valid ? 'Valid' : 'Tidak Valid' }}</td>
                     <td>
                         <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'view-layanan')">
                             <x-icon name="eye" class="h-4 w-4"></x-icon>
@@ -34,46 +34,6 @@
                         <button x-data="" x-on:click.prevent="$dispatch('open-modal', 'proses-layanan')">
                             <x-icon name="pencil-square" class="h-4 w-4"></x-icon>
                         </button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Leglisir Ijazah</td>
-                    <td>{{ Str::random(8) }}</td>
-                    <td>Ditolak</td>
-                    <td>
-                        <x-icon name="eye" class="h-4 w-4"></x-icon>
-                        <x-icon name="trash" class="h-4 w-4"></x-icon>
-                        <x-icon name="pencil-square" class="h-4 w-4"></x-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Leglisir Raport</td>
-                    <td>{{ Str::random(8) }}</td>
-                    <td>Sedang Diproses</td>
-                    <td>
-                        <x-icon name="eye" class="h-4 w-4"></x-icon>
-                        <x-icon name="trash" class="h-4 w-4"></x-icon>
-                        <x-icon name="pencil-square" class="h-4 w-4"></x-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Leglisir Ijazah</td>
-                    <td>{{ Str::random(8) }}</td>
-                    <td>Selesai</td>
-                    <td>
-                        <x-icon name="eye" class="h-4 w-4"></x-icon>
-                        <x-icon name="trash" class="h-4 w-4"></x-icon>
-                        <x-icon name="pencil-square" class="h-4 w-4"></x-icon>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Leglisir Raport</td>
-                    <td>{{ Str::random(8) }}</td>
-                    <td>Selesai</td>
-                    <td>
-                        <x-icon name="eye" class="h-4 w-4"></x-icon>
-                        <x-icon name="trash" class="h-4 w-4"></x-icon>
-                        <x-icon name="pencil-square" class="h-4 w-4"></x-icon>
                     </td>
                 </tr>
             </x-table>

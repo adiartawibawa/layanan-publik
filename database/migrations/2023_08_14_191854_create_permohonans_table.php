@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('permohonan', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('layanan_id')->constrained();
+            $table->foreignUuid('layanan_id')->constrained('layanan');
             $table->foreignUuid('user_id')->constrained();
             $table->string('kode_mohon', 8)->unique();
             $table->boolean('is_valid')->default(false);
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignUuid('permohonan_id')->constrained('permohonan');
             $table->char('aktivitas'); // 0 : dibuat, 1 : diterima, 2 : diproses, 3 : dikembalikan, 4 : selesai
             $table->longText('keterangan')->nullable();
-            $table->boolean('is_readed')->default(false);
+            $table->boolean('is_readed')->default(false); // menampilkan notifikasi sudah terbaca atau belum
             $table->timestamps();
         });
 
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreignUuid('permohonan_id')->constrained('permohonan');
             $table->string('category')->index();
             $table->string('mohon_type')->index();
-            $table->string('mohon_key')->unique();
+            $table->string('mohon_key');
             $table->string('name');
             $table->string('string_value')->nullable();
             $table->string('file_value')->nullable();

@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class DetailPermohonan extends Model
+class DetailPermohonan extends Model implements HasMedia
 {
+    use InteractsWithMedia;
+
     protected $table = 'detail_permohonan';
 
     protected $fillable = [

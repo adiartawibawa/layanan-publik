@@ -14,6 +14,13 @@ class Permohonan extends Model
 
     protected $table = 'permohonan';
 
+    protected $fillable = [
+        'layanan_id',
+        'user_id',
+        'kode_mohon',
+        'is_valid',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');

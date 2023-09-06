@@ -47,20 +47,34 @@ class PermohonanController extends Controller
     {
         $params = $request->except('_token');
 
-        $tambahPermohonan = true;
+        $permohonan = Permohonan::create([
+            'layanan_id' => $request->layanan_id,
+            'user_id' => Auth::user()->id,
+            'kode_mohon' => Str::random(8)
+        ]);
+
+        $savePermohonan = true;
+
         $permohonanKeys = Ketentuan::whereIn('key', array_keys($params))->get()->pluck('key')->toArray();
 
         if ($params) {
             foreach ($params as $permohonanKey => $permohonanValue) {
-                if (in_array($permohonanKey, $permohonanKeys) && !$this->savePermohonan($permohonanKey, $permohonanValue)) {
-                    $tambahPermohonan = false;
+
+                if (in_array($permohonanKey, $permohonanKeys) && !$this->savePermohonan($permohonan, $permohonanKey, $permohonanValue)) {
+                    $savePermohonan = false;
                     break;
                 }
             }
         }
+
+        if ($savePermohonan) {
+            return redirect('dashboard')->with('success', 'Permohonan telah dikirim');
+        }
+
+        return redirect('dashboard')->with('error', 'Permohonan tidak dapat dikirim');
     }
 
-    private function savePermohonan($permohonanKey, $permohonanValue)
+    private function savePermohonan($permohonan, $permohonanKey, $permohonanValue)
     {
         $ketentuan = Ketentuan::where('key', $permohonanKey)->first();
 
@@ -68,31 +82,29 @@ class PermohonanController extends Controller
             return;
         }
 
-        if ($ketentuan->type == 'file' && $permohonanValue) {
-            $permohonanValue = $this->uploadFile($ketentuan, $permohonanValue);
-        }
-        $permohonan = Permohonan::create([
-            'layanan_id' => $ketentuan->ketentuan_id,
-            'user_id' => Auth::user()->id,
-            'kode_mohon' => Str::random(8)
-        ]);
-
         $detail = new DetailPermohonan;
         $detail->permohonan_id = $permohonan->id;
+        $detail->category = $ketentuan->category;
         $detail->mohon_type = $ketentuan->type;
         $detail->mohon_key = $ketentuan->key;
         $detail->name = $ketentuan->name;
-        $detail[$detail->type . '_value'] = $permohonanValue;
+        $detail->save();
+
+        if ($ketentuan->type == 'file' && $permohonanValue) {
+            $permohonanValue = $this->uploadFile($detail, $permohonanValue);
+        }
+
+        $detail[$ketentuan->type . '_value'] = $permohonanValue;
 
         return $detail->save();
     }
 
-    private function uploadFile($permohonan, $permohonanValue)
+    private function uploadFile($detail, $permohonanValue)
     {
-        $permohonan->clearMediaCollection('images');
-        $permohonan->addMediaFromRequest($permohonan->mohon_key)->toMediaCollection('images');
+        $detail->clearMediaCollection('images');
+        $detail->addMediaFromRequest($detail->mohon_key)->toMediaCollection('images');
 
-        return $permohonan->getFirstMedia('images')->getUrl();
+        return $detail->getFirstMedia('images')->getUrl();
     }
 
     /**

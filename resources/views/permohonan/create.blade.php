@@ -67,54 +67,57 @@
                         </div>
 
                         <div class="relative flex flex-col">
-                            {!! Form::open(['route' => 'permohonan.store', 'method' => 'POST']) !!}
-                            @csrf
-                            <!-- Panel #1 -->
-                            <div id="tabpanel-1" class="p-4 dark:bg-gray-800" x-show="activeTab === 1" role="tabpanel"
-                                aria-labelledby="tab-1"
-                                x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
-                                x-transition:enter-start="opacity-0 -translate-y-8"
-                                x-transition:enter-end="opacity-100 translate-y-0"
-                                x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
-                                x-transition:leave-start="opacity-100 translate-y-0"
-                                x-transition:leave-end="opacity-0 translate-y-12">
+                            <form action="{{ route('permohonan.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input label="Layanan Id" name="layanan_id" type="hidden"
+                                    value="{{ $layanan->id }}" />
+                                <!-- Panel #1 -->
+                                <div id="tabpanel-1" class="p-4 dark:bg-gray-800" x-show="activeTab === 1"
+                                    role="tabpanel" aria-labelledby="tab-1"
+                                    x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
+                                    x-transition:enter-start="opacity-0 -translate-y-8"
+                                    x-transition:enter-end="opacity-100 translate-y-0"
+                                    x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
+                                    x-transition:leave-start="opacity-100 translate-y-0"
+                                    x-transition:leave-end="opacity-0 translate-y-12">
 
-                                {{-- Content goes here --}}
-                                <div class="text-sm text-gray-500 dark:text-gray-400">
-                                    <x-table striped="true" divider="thin">
-                                        @include('permohonan.form-formulir', [$layanan])
+                                    {{-- Content goes here --}}
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                                        <x-table striped="true" divider="thin">
+                                            @include('permohonan.form-formulir', [$layanan])
 
-                                        <div class="flex items-center justify-end w-full gap-2">
-                                            <x-button size="small" type="secondary"
-                                                @click="activeTab = 2">selanjutnya</x-button>
-                                        </div>
-                                    </x-table>
+                                            <div class="flex items-center justify-end w-full gap-2">
+                                                <x-button size="small" type="secondary"
+                                                    @click="activeTab = 2">selanjutnya</x-button>
+                                            </div>
+                                        </x-table>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <!-- Panel #2 -->
-                            <div id="tabpanel-2" class="p-4 dark:bg-gray-800" x-show="activeTab === 2" role="tabpanel"
-                                aria-labelledby="tab-2"
-                                x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
-                                x-transition:enter-start="opacity-0 -translate-y-8"
-                                x-transition:enter-end="opacity-100 translate-y-0"
-                                x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
-                                x-transition:leave-start="opacity-100 translate-y-0"
-                                x-transition:leave-end="opacity-0 translate-y-12">
+                                <!-- Panel #2 -->
+                                <div id="tabpanel-2" class="p-4 dark:bg-gray-800" x-show="activeTab === 2"
+                                    role="tabpanel" aria-labelledby="tab-2"
+                                    x-transition:enter="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-700 transform order-first"
+                                    x-transition:enter-start="opacity-0 -translate-y-8"
+                                    x-transition:enter-end="opacity-100 translate-y-0"
+                                    x-transition:leave="transition ease-[cubic-bezier(0.68,-0.3,0.32,1)] duration-300 transform absolute"
+                                    x-transition:leave-start="opacity-100 translate-y-0"
+                                    x-transition:leave-end="opacity-0 translate-y-12">
 
-                                {{-- Content goes here --}}
-                                <div class="text-sm text-gray-500 dark:text-gray-400">
-                                    <x-table striped="true" divider="thin">
-                                        @include('permohonan.form-syarat', [$layanan])
-                                        <div class="flex items-center justify-end w-full gap-2">
-                                            <x-button size="small" type="secondary"
-                                                @click="activeTab = 1">sebelumnya</x-button>
-                                            <x-button size="small" can_submit="true" color="indigo">Ajukan</x-button>
-                                        </div>
-                                    </x-table>
+                                    {{-- Content goes here --}}
+                                    <div class="text-sm text-gray-500 dark:text-gray-400">
+                                        <x-table striped="true" divider="thin">
+                                            @include('permohonan.form-syarat', [$layanan])
+                                            <div class="flex items-center justify-end w-full gap-2">
+                                                <x-button size="small" type="secondary"
+                                                    @click="activeTab = 1">sebelumnya</x-button>
+                                                <x-button size="small" can_submit="true"
+                                                    color="indigo">Ajukan</x-button>
+                                            </div>
+                                        </x-table>
+                                    </div>
                                 </div>
-                            </div>
-                            {!! Form::close() !!}
+                            </form>
                         </div>
 
                     </div>
