@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailPermohonan;
 use App\Models\Ketentuan;
 use App\Models\Layanan;
+use App\Models\Permohonan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PermohonanController extends Controller
 {
@@ -58,6 +62,37 @@ class PermohonanController extends Controller
 
     private function savePermohonan($permohonanKey, $permohonanValue)
     {
+        $ketentuan = Ketentuan::where('key', $permohonanKey)->first();
+
+        if (!$ketentuan) {
+            return;
+        }
+
+        if ($ketentuan->type == 'file' && $permohonanValue) {
+            $permohonanValue = $this->uploadFile($ketentuan, $permohonanValue);
+        }
+        $permohonan = Permohonan::create([
+            'layanan_id' => $ketentuan->ketentuan_id,
+            'user_id' => Auth::user()->id,
+            'kode_mohon' => Str::random(8)
+        ]);
+
+        $detail = new DetailPermohonan;
+        $detail->permohonan_id = $permohonan->id;
+        $detail->mohon_type = $ketentuan->type;
+        $detail->mohon_key = $ketentuan->key;
+        $detail->name = $ketentuan->name;
+        $detail[$detail->type . '_value'] = $permohonanValue;
+
+        return $detail->save();
+    }
+
+    private function uploadFile($permohonan, $permohonanValue)
+    {
+        $permohonan->clearMediaCollection('images');
+        $permohonan->addMediaFromRequest($permohonan->mohon_key)->toMediaCollection('images');
+
+        return $permohonan->getFirstMedia('images')->getUrl();
     }
 
     /**

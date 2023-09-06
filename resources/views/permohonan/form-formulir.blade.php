@@ -1,12 +1,12 @@
 @foreach ($layanan->ketentuans as $item)
     @if ($item->category == 'formulir')
         @switch($item->type)
-            @case('text')
+            @case('string')
                 <x-input type="text" label="{{ $item->name }}" name="{{ $item->key }}" id="{{ $item->key }}"
                     value="{{ $item[$item->type . '_value'] }}" />
             @break
 
-            @case('textarea')
+            @case('text')
                 <x-textarea label="{{ $item->name }}" name="{{ $item->key }}" id="{{ $item->key }}"
                     value="{{ $item[$item->type . '_value'] }}" />
             @break

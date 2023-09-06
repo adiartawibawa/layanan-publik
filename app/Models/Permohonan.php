@@ -29,6 +29,11 @@ class Permohonan extends Model
         return $this->hasMany(DetailPermohonan::class, 'permohonan_id');
     }
 
+    public function layanan(): BelongsTo
+    {
+        return $this->belongsTo(Layanan::class, 'layanan_id');
+    }
+
     public function getCreatedAtFormattedAttribute()
     {
         return Carbon::parse($this->attributes['created_at'])->format('d, M Y H:i:s');

@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('permohonan', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->foreignUuid('layanan_id')->constrained();
             $table->foreignUuid('user_id')->constrained();
             $table->string('kode_mohon', 8)->unique();
+            $table->boolean('is_valid')->default(false);
             $table->timestamps();
         });
 
@@ -41,7 +43,6 @@ return new class extends Migration
             $table->bigInteger('integer_value')->nullable();
             $table->decimal('decimal_value', 15, 2)->nullable();
             $table->string('validation_rules')->nullable();
-            $table->boolean('is_valid')->default(false);
             $table->timestamps();
         });
     }
