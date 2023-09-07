@@ -12,6 +12,7 @@ class StatusPermohonan extends Model
     protected $table = 'status_permohonan';
 
     protected $fillable = [
+        'permohonan_id',
         'aktivitas',
         'keterangan'
     ];

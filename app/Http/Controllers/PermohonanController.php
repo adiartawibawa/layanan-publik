@@ -6,6 +6,7 @@ use App\Models\DetailPermohonan;
 use App\Models\Ketentuan;
 use App\Models\Layanan;
 use App\Models\Permohonan;
+use App\Models\StatusPermohonan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -47,19 +48,19 @@ class PermohonanController extends Controller
     {
         $params = $request->except('_token');
 
-        $permohonan = Permohonan::create([
-            'layanan_id' => $request->layanan_id,
-            'user_id' => Auth::user()->id,
-            'kode_mohon' => Str::random(8)
-        ]);
-
         $savePermohonan = true;
 
-        $permohonanKeys = Ketentuan::whereIn('key', array_keys($params))->get()->pluck('key')->toArray();
-
         if ($params) {
-            foreach ($params as $permohonanKey => $permohonanValue) {
 
+            $permohonan = Permohonan::create([
+                'layanan_id' => $request->layanan_id,
+                'user_id' => Auth::user()->id,
+                'kode_mohon' => Str::random(8)
+            ]);
+
+            $permohonanKeys = Ketentuan::whereIn('key', array_keys($params))->get()->pluck('key')->toArray();
+
+            foreach ($params as $permohonanKey => $permohonanValue) {
                 if (in_array($permohonanKey, $permohonanKeys) && !$this->savePermohonan($permohonan, $permohonanKey, $permohonanValue)) {
                     $savePermohonan = false;
                     break;
@@ -68,6 +69,13 @@ class PermohonanController extends Controller
         }
 
         if ($savePermohonan) {
+
+            StatusPermohonan::create([
+                'permohonan_id' => $permohonan->id,
+                'aktivitas' => 0,
+                'keterangan' => 'Permohonan layanan telah dibuat',
+            ]);
+
             return redirect('dashboard')->with('success', 'Permohonan telah dikirim');
         }
 
