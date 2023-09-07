@@ -25,6 +25,7 @@ class DashboardController extends Controller
                     ->on('latest_status.max_created_at', '=', 'status_permohonan.created_at');
             })
             ->where('user_id', '=', Auth::user()->id)
+            ->orderBy('created_at', 'DESC')
             ->get();
 
         $this->data['permohonans'] = $permohonans;
