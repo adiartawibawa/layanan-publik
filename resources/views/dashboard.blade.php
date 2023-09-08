@@ -63,7 +63,7 @@
                                                         @endswitch
                                                     </div>
                                                     <div class="mb-auto text-sm text-gray-600">
-                                                        <button @click="isDetail = !isDetail; sendDataToLivewire()"
+                                                        <button @click="isDetail = !isDetail"
                                                             class="text-indigo-700 font-semibold">Detail</button>
                                                     </div>
                                                     <div class="w-full rounded-full bg-gray-200 dark:bg-gray-700">
@@ -127,8 +127,16 @@
                         x-transition:leave-start="opacity-100 translate-x-0"
                         x-transition:leave-end="opacity-0 -translate-x-12">
 
-                        <x-card title="Riwayat Permohonan">
-                            @livewire('permohonan-timeline', ['permohonan' => $permohonan])
+                        <x-card>
+                            <div class="flex flex-row items-center justify-between w-full">
+                                <div class="uppercase tracking-wide text-xs text-gray-500/90 mb-2">Riwayat Permohonan</div>
+                                <button @click="isDetail = !isDetail"
+                                    :class="isDetail ? 'rotate-0 duration-500' : 'rotate-90 duration-500'">
+                                    <x-icon class="h-6 w-6 text-gray-500/90 cursor-pointer" name="x-mark"></x-icon>
+                                </button>
+
+                            </div>
+                            {{-- @livewire('permohonan-timeline', ['permohonan' => $permohonan]) --}}
                         </x-card>
                     </div>
                 </section>

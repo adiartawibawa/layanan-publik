@@ -24,6 +24,7 @@ class DetailPermohonan extends Model implements HasMedia
         'text_value',
         'boolean_value',
         'integer_value',
+        'date_value',
         'decimal_value',
     ];
 

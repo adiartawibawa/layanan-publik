@@ -155,7 +155,7 @@
                         <option value="string">Jawaban singkat</option>
                         <option value="text">Paragraf</option>
                         <option value="file">File</option>
-                        <option value="datepicker">Tanggal</option>
+                        <option value="date">Tanggal</option>
                     </select>
                 </div>
                 <div class="mt-4">

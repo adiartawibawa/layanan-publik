@@ -41,6 +41,7 @@ return new class extends Migration
             $table->longText('text_value')->nullable();
             $table->boolean('boolean_value')->nullable();
             $table->bigInteger('integer_value')->nullable();
+            $table->date('date_value')->nullable();
             $table->decimal('decimal_value', 15, 2)->nullable();
             $table->string('validation_rules')->nullable();
             $table->timestamps();
