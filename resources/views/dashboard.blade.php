@@ -8,7 +8,7 @@
             <section class="mb-8 flex flex-col md:flex-row gap-4" x-data="{ isDetail: false }">
                 <div class="w-full md:w-2/3">
                     <x-card title="Permohonan Saya">
-                        @livewire('user.permohonan-layanan')
+                        @livewire('user.permohonan.layanan')
                     </x-card>
                 </div>
                 <div class="w-full md:w-1/3" x-show="isDetail"
@@ -28,22 +28,12 @@
                             </button>
 
                         </div>
-                        {{-- @livewire('permohonan-timeline', ['permohonan' => $permohonan]) --}}
+                        @livewire('user.permohonan.detail', ['idMohon' => '$idMohon'])
                     </x-card>
                 </div>
             </section>
 
         </div>
     </div>
-
-    <script>
-        function sendDataToLivewire() {
-            // Ambil nilai permohonan dari x-data
-            const permohonanValue = this.permohonan;
-
-            // Kirim nilai permohonan ke komponen Livewire
-            Livewire.emit('updatePermohonan', permohonanValue);
-        }
-    </script>
 
 </x-app-layout>
