@@ -1,22 +1,24 @@
-<div>
+<div x-data="{ selected: 0 }">
     <ul>
         @forelse ($permohonans as $item)
-            <li class="relative border-b border-gray-200" x-data="{ selected: @json($loop->first) }">
+            <li class="relative border-b border-gray-200">
                 <button type="button" class="w-full px-8 py-6 text-left"
-                    @click="selected !== 1 ? selected = 1 : selected = null">
+                    @click="selected !== {{ $loop->index }} ? selected = {{ $loop->index }} : selected = null">
                     <div class="flex items-center justify-between">
                         <div class="text-xl font-semibold text-gray-800">
                             {{ $item->layanan_name }}
                         </div>
-                        <span x-bind:class="{ 'rotate-180 duration-700': selected, 'duration-700': !selected }">
+                        <span
+                            x-bind:class="selected !== {{ $loop->index }} ? 'rotate-180 duration-700' : 'duration-700'">
                             <x-icon name="chevron-down" class="h-4 w-4" />
                         </span>
                     </div>
                 </button>
 
                 <div class="relative overflow-hidden transition-all max-h-0 duration-700" style=""
-                    x-ref="container1"
-                    x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
+                    x-ref="container{{ $loop->index }}"
+                    x-bind:style="selected == {{ $loop->index }} ? 'max-height: ' + $refs.container{{ $loop->index }}.scrollHeight +
+                        'px' : ''">
                     <div class="p-6">
                         <div class="flex flex-row gap-4">
                             <div class="h-32 w-32 object-cover object-center">
