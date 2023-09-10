@@ -27,7 +27,7 @@
                                     Kode Permohonan :
                                     <span class="font-semibold">{{ $item->kode_mohon }}</span>
                                 </div>
-                                <div class="mb-1 text-sm text-gray-600">
+                                <div class="hidden md:block mb-1 text-sm text-gray-600">
                                     Dibuat : {{ $item->created_at->diffForHumans() }}
                                 </div>
                                 <div class="mb-1 text-sm text-gray-600">
