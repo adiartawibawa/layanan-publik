@@ -7,8 +7,10 @@ use App\Models\Ketentuan;
 use App\Models\Layanan;
 use App\Models\Permohonan;
 use App\Models\StatusPermohonan;
+use App\Notifications\PermohonanLayananUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
 class PermohonanController extends Controller
@@ -75,6 +77,9 @@ class PermohonanController extends Controller
                 'aktivitas' => 0,
                 'keterangan' => 'Permohonan layanan telah dibuat',
             ]);
+
+            // Notification
+            Notification::send(Auth::user(), new PermohonanLayananUpdate($permohonan));
 
             return redirect('dashboard')->with('success', 'Permohonan telah dikirim');
         }

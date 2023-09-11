@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignUuid('permohonan_id')->constrained('permohonan');
             $table->char('aktivitas'); // 0 : dibuat, 1 : diterima, 2 : diproses, 3 : dikembalikan, 4 : selesai
             $table->longText('keterangan')->nullable();
-            $table->boolean('is_readed')->default(false); // menampilkan notifikasi sudah terbaca atau belum
+            // $table->boolean('is_readed')->default(false); // menampilkan notifikasi sudah terbaca atau belum
             $table->timestamps();
         });
 

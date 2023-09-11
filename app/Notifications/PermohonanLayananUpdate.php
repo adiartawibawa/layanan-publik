@@ -25,7 +25,7 @@ class PermohonanLayananUpdate extends Notification
      *
      * @return array<int, string>
      */
-    public function via(object $notifiable): array
+    public function via($notifiable)
     {
         return ['database'];
     }
@@ -33,7 +33,7 @@ class PermohonanLayananUpdate extends Notification
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail(object $notifiable): MailMessage
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
             ->line('The introduction to the notification.')
@@ -46,10 +46,42 @@ class PermohonanLayananUpdate extends Notification
      *
      * @return array<string, mixed>
      */
-    public function toArray(object $notifiable): array
+    public function toArray($notifiable)
     {
         return [
-            'permohonan' => $this->permohonan,
+            'permohonan_id' => $this->permohonan->id,
+            'status' => $this->getAktivitas($this->permohonan->statuses),
+            'keterangan' => $this->getKeterangan($this->permohonan->statuses),
         ];
+    }
+
+    private function getAktivitas($datas)
+    {
+        foreach ($datas as $item) {
+            switch ($item->aktivitas) {
+                case 1:
+                    return 'Permohonan Diterima';
+                    break;
+                case 2:
+                    return 'Permohonan Diproses';
+                    break;
+                case 3:
+                    return 'Permohonan Dikembalikan';
+                    break;
+                case 4:
+                    return 'Permohonan Selesai';
+                    break;
+                default:
+                    return 'Permohonan Baru';
+                    break;
+            }
+        }
+    }
+
+    private function getKeterangan($datas)
+    {
+        foreach ($datas as $item) {
+            return $item->keterangan;
+        }
     }
 }
