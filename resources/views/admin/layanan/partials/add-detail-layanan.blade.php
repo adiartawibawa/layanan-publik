@@ -201,9 +201,10 @@
                     <select id="type" name="type"
                         class="border border-gray-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                         <option selected>Tipe Formulir</option>
-                        <option value="text">Jawaban singkat</option>
-                        <option value="textarea">Paragraf</option>
-                        <option value="file">Upload file</option>
+                        <option value="string">Jawaban singkat</option>
+                        <option value="text">Paragraf</option>
+                        <option value="file">File</option>
+                        <option value="date">Tanggal</option>
                     </select>
                 </div>
                 <div class="mt-4">

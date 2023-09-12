@@ -11,7 +11,7 @@
                     value="{{ $item[$item->type . '_value'] }}" />
             @break
 
-            @case('datepicker')
+            @case('date')
                 <x-datepicker placeholder="{{ $item->name }}" type="single" name="{{ $item->key }}"
                     id="{{ $item->key }}" value="{{ $item[$item->type . '_value'] }}" />
             @break

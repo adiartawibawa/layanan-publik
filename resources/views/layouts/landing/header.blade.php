@@ -11,7 +11,7 @@
             @if (Route::has('login'))
                 <div class="flex items-center lg:order-2">
                     @auth
-                        <a href="{{ route(Auth::user()->getRedirectRoute()) }}"
+                        <a href="{{ url(Auth::user()->getRedirectRoute()) }}"
                             class="block py-2 pr-4 pl-3 text-gray-700 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}"

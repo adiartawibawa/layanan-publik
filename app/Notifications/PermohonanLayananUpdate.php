@@ -33,7 +33,7 @@ class PermohonanLayananUpdate extends Notification
     /**
      * Get the mail representation of the notification.
      */
-    public function toMail($notifiable): MailMessage
+    public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
             ->line('The introduction to the notification.')
@@ -49,9 +49,12 @@ class PermohonanLayananUpdate extends Notification
     public function toArray($notifiable)
     {
         return [
-            'permohonan_id' => $this->permohonan->id,
-            'status' => $this->getAktivitas($this->permohonan->statuses),
-            'keterangan' => $this->getKeterangan($this->permohonan->statuses),
+            'layanan' => $this->permohonan->layanan->name,
+            'permohonan' => $this->permohonan->id,
+            'keterangan' => [
+                'status' => $this->getAktivitas($this->permohonan->statuses),
+                'keterangan' => $this->getKeterangan($this->permohonan->statuses),
+            ]
         ];
     }
 
@@ -60,19 +63,19 @@ class PermohonanLayananUpdate extends Notification
         foreach ($datas as $item) {
             switch ($item->aktivitas) {
                 case 1:
-                    return 'Permohonan Diterima';
+                    return 'Diterima';
                     break;
                 case 2:
-                    return 'Permohonan Diproses';
+                    return 'Diproses';
                     break;
                 case 3:
-                    return 'Permohonan Dikembalikan';
+                    return 'Dikembalikan';
                     break;
                 case 4:
-                    return 'Permohonan Selesai';
+                    return 'Selesai';
                     break;
                 default:
-                    return 'Permohonan Baru';
+                    return 'Baru';
                     break;
             }
         }

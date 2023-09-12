@@ -7,6 +7,8 @@ use App\Models\Ketentuan;
 use App\Models\Layanan;
 use App\Models\Permohonan;
 use App\Models\StatusPermohonan;
+use App\Models\User;
+use App\Notifications\LayananMasuk;
 use App\Notifications\PermohonanLayananUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,8 +80,12 @@ class PermohonanController extends Controller
                 'keterangan' => 'Permohonan layanan telah dibuat',
             ]);
 
-            // Notification
+            // Notification to user
             Notification::send(Auth::user(), new PermohonanLayananUpdate($permohonan));
+
+            // Notification to admin
+            $admin = User::role('Admin')->get();
+            Notification::send($admin, new LayananMasuk($permohonan));
 
             return redirect('dashboard')->with('success', 'Permohonan telah dikirim');
         }
@@ -151,5 +157,10 @@ class PermohonanController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function riwayat(string $id)
+    {
+        return view('');
     }
 }
