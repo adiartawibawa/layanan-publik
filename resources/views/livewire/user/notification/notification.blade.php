@@ -32,9 +32,10 @@
                                     @if ($user->hasRole('Admin'))
                                         Anda memiliki sebuah permohonan baru.
                                     @else
-                                        <div class="font-semibold text-gray-900 dark:text-white">
-                                            [{{ Str::upper($notification->data['keterangan']['status']) }}]</div>
-                                        <div class="text-xs">
+                                        <div class="text-xs dark:text-white">
+                                            <span class="font-semibold text-gray-900 ">
+                                                [{{ Str::upper($notification->data['keterangan']['status']) }}]
+                                            </span>
                                             {{ $notification->data['keterangan']['keterangan'] }}
                                         </div>
                                     @endif

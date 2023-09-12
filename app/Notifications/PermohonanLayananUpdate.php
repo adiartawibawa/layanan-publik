@@ -62,16 +62,16 @@ class PermohonanLayananUpdate extends Notification
     {
         foreach ($datas as $item) {
             switch ($item->aktivitas) {
-                case 1:
+                case '1':
                     return 'Diterima';
                     break;
-                case 2:
+                case '2':
                     return 'Diproses';
                     break;
-                case 3:
+                case '3':
                     return 'Dikembalikan';
                     break;
-                case 4:
+                case '4':
                     return 'Selesai';
                     break;
                 default:

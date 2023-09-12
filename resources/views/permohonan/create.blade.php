@@ -15,7 +15,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg pb-10">
+            <div class="bg-white dark:bg-gray-800 shadow-sm sm:rounded-lg pb-10">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <div x-data="{ activeTab: 1 }">
                         <div class="border-b border-gray-200 dark:border-gray-700">
@@ -85,7 +85,6 @@
                                     <div class="text-sm text-gray-500 dark:text-gray-400">
                                         <x-table striped="true" divider="thin">
                                             @include('permohonan.form-formulir', [$layanan])
-
                                             <div class="flex items-center justify-end w-full gap-2">
                                                 <x-button size="small" type="secondary"
                                                     @click="activeTab = 2">selanjutnya</x-button>
