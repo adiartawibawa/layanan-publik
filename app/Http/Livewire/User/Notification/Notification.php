@@ -8,29 +8,14 @@ use Livewire\Component;
 class Notification extends Component
 {
     public $user;
-    public $count = 0;
-    public $unreadNotifications;
 
     public function mount($user)
     {
         $this->user = $user;
-        $this->unreadNotifications = $this->unreadCount();
     }
 
     public function render()
     {
         return view('livewire.user.notification.notification');
-    }
-
-    public function increment()
-    {
-        $this->count++;
-    }
-
-    public function unreadCount()
-    {
-        $getUnreadCount = $this->user->unreadNotifications->count();
-
-        $this->unreadNotifications = $getUnreadCount;
     }
 }

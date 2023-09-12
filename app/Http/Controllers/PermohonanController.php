@@ -12,6 +12,7 @@ use App\Notifications\LayananMasuk;
 use App\Notifications\PermohonanLayananUpdate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Str;
 
@@ -159,8 +160,16 @@ class PermohonanController extends Controller
         //
     }
 
-    public function riwayat(string $id)
+    public function riwayat(Request $request)
     {
-        return view('');
+        $permohonan = Permohonan::findOrFail($request->permohonan);
+
+        $notification = auth()->user()->notifications()->where('id', $request->notification)->first();
+
+        if ($notification) {
+            $notification->markAsRead();
+        }
+
+        return view('permohonan.riwayat-permohonan', compact('permohonan'));
     }
 }

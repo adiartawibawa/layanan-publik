@@ -15,7 +15,7 @@
 
         <x-slot name="content">
             <div id="dropdownNotification"
-                class="w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-800 dark:divide-gray-700"
+                class="w-full max-w-sm bg-white divide-y divide-gray-100 rounded-lg dark:bg-gray-800 dark:divide-gray-700"
                 aria-labelledby="dropdownNotificationButton">
                 <div
                     class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-gray-800 dark:text-white">
@@ -23,7 +23,8 @@
                 </div>
                 <div class="divide-y divide-gray-100 dark:divide-gray-700">
                     @forelse ($user->unreadNotifications as $notification)
-                        <a href="#" class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                        <a href="{{ route('permohonan.riwayat', ['permohonan' => $notification->data['permohonan'], 'notification' => $notification->id]) }}"
+                            class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
                             <div class="w-full pl-3">
                                 <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Pemberitahuan dari <span
                                         class="font-semibold text-gray-900 dark:text-white">{{ $notification->data['layanan'] }}</span>
@@ -33,7 +34,9 @@
                                     @else
                                         <div class="font-semibold text-gray-900 dark:text-white">
                                             [{{ Str::upper($notification->data['keterangan']['status']) }}]</div>
-                                        {{ $notification->data['keterangan']['keterangan'] }}
+                                        <div class="text-xs">
+                                            {{ $notification->data['keterangan']['keterangan'] }}
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="text-xs text-blue-600 dark:text-blue-500">
@@ -41,31 +44,23 @@
                             </div>
                         </a>
                     @empty
-                        <p> Anda tidak mempunyai pemberitahuan baru </p>
+                        <p class="text-gray-500 text-xs mb-1.5 dark:text-gray-400 p-4"> Anda tidak mempunyai
+                            pemberitahuan
+                            baru </p>
                     @endforelse
                 </div>
                 <a href="#"
-                    class="block py-2 text-sm font-medium text-center text-gray-900 rounded-b-lg hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
+                    class="block py-2 text-sm font-medium text-center text-gray-900   hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
                     <div class="inline-flex items-center ">
                         <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">
                             <path
                                 d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
                         </svg>
-                        View all
+                        Lihat semua
                     </div>
                 </a>
             </div>
-            {{-- @forelse ($user->unreadNotifications as $notification)
-                <x-dropdown-link href="#">
-                    <h4 class="font-medium text-base text-gray-800 mb-2">{{ $notification->data['status'] }}</h4>
-                    <p class="font-normal text-sm text-gray-600 mb-2">{{ $notification->data['keterangan'] }}</p>
-                    <p class="font-normal text-xs text-gray-500 mb-2">{{ $notification->created_at->diffForHumans() }}
-                    </p>
-                </x-dropdown-link>
-            @empty
-                <x-dropdown-link href="#"> Anda tidak mempunyai pemberitahuan baru </x-dropdown-link>
-            @endforelse --}}
         </x-slot>
     </x-dropdown>
 </div>

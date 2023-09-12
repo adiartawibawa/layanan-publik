@@ -28,7 +28,7 @@
                             </button>
 
                         </div>
-                        @livewire('user.permohonan.detail', ['idMohon' => '$idMohon'])
+                        @livewire('user.permohonan.detail', ['permohonan' => '$permohonan'])
                     </x-card>
                 </div>
             </section>

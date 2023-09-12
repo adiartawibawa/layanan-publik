@@ -7,6 +7,8 @@ use Livewire\Component;
 
 class Detail extends Component
 {
+    public $permohonan;
+
     public $riwayat;
 
     protected $listeners = ['detailMohon'];
@@ -18,9 +20,11 @@ class Detail extends Component
         $this->riwayat = $statusMohon;
     }
 
-    public function mount()
+    public function mount($permohonan)
     {
-        $this->detailMohon($this->riwayat);
+        $this->permohonan = $permohonan;
+
+        $this->detailMohon($this->permohonan);
     }
 
     public function render()
