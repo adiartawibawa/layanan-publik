@@ -35,8 +35,16 @@ class PermohonanController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $permohonan)
+    public function show(Request $request)
     {
+        $permohonan = $request->permohonan;
+
+        $notification = auth()->user()->notifications()->where('id', $request->notification)->first();
+
+        if ($notification) {
+            $notification->markAsRead();
+        }
+
         return view('admin.permohonan.show', compact('permohonan'));
     }
 

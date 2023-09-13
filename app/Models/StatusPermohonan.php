@@ -31,4 +31,9 @@ class StatusPermohonan extends Model
     {
         return $this->belongsTo(Permohonan::class, 'permohonan_id');
     }
+
+    public function latestStatus()
+    {
+        return $this->belongsTo(Permohonan::class, 'permohonan_id')->latest();
+    }
 }

@@ -19,6 +19,7 @@ Route::middleware('role:Admin')->prefix('admin')->name('admin.')->group(function
     Route::delete('/pelayanan/detail/{layanan}/{ketentuan}', [LayananController::class, 'deleteDetailLayanan'])->name('detail.pelayanan.destroy');
 
     // Permohonan Masuk
+    Route::get('permohonan/{permohonan?}/{notification?}', [PermohonanController::class, 'show'])->name('permohonan.notification');
     Route::resource('permohonan', PermohonanController::class);
 
     Route::get('setting/remove/{id}', [SettingController::class, 'remove'])->name('setting.update');

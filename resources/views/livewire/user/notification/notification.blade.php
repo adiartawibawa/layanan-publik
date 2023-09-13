@@ -23,31 +23,38 @@
                 </div>
                 <div class="divide-y divide-gray-100 dark:divide-gray-700">
                     @forelse ($user->unreadNotifications as $notification)
-                        <a href="{{ route('permohonan.riwayat', ['permohonan' => $notification->data['permohonan'], 'notification' => $notification->id]) }}"
-                            class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <div class="w-full pl-3">
-                                <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Pemberitahuan dari <span
-                                        class="font-semibold text-gray-900 dark:text-white">{{ $notification->data['layanan'] }}</span>
-                                    :
-                                    @if ($user->hasRole('Admin'))
-                                        Anda memiliki sebuah permohonan baru.
-                                    @else
-                                        <div class="text-xs dark:text-white">
-                                            <span class="font-semibold text-gray-900 ">
-                                                [{{ Str::upper($notification->data['keterangan']['status']) }}]
-                                            </span>
-                                            {{ $notification->data['keterangan']['keterangan'] }}
-                                        </div>
-                                    @endif
+                        @role('Root')
+                            <a href="{{ route('admin.permohonan.notification', ['permohonan' => $notification->data['permohonan'], 'notification' => $notification->id]) }}"
+                                class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                            @else
+                                <a href="{{ route('permohonan.riwayat', ['permohonan' => $notification->data['permohonan'], 'notification' => $notification->id]) }}"
+                                    class="flex px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-700">
+                                @endrole
+
+                                <div class="w-full pl-3">
+                                    <div class="text-gray-500 text-sm mb-1.5 dark:text-gray-400">Pemberitahuan dari
+                                        <span
+                                            class="font-semibold text-gray-900 dark:text-white">{{ $notification->data['layanan'] }}</span>
+                                        :
+                                        @if ($user->hasRole('Admin'))
+                                            Anda memiliki sebuah permohonan baru.
+                                        @else
+                                            <div class="text-xs dark:text-white">
+                                                <span class="font-semibold text-gray-900 ">
+                                                    [{{ Str::upper($notification->data['keterangan']['status']) }}]
+                                                </span>
+                                                {{ $notification->data['keterangan']['keterangan'] }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                    <div class="text-xs text-blue-600 dark:text-blue-500">
+                                        {{ $notification->created_at->diffForHumans() }}</div>
                                 </div>
-                                <div class="text-xs text-blue-600 dark:text-blue-500">
-                                    {{ $notification->created_at->diffForHumans() }}</div>
-                            </div>
-                        </a>
-                    @empty
-                        <p class="text-gray-500 text-xs mb-1.5 dark:text-gray-400 p-4"> Anda tidak mempunyai
-                            pemberitahuan
-                            baru </p>
+                            </a>
+                        @empty
+                            <p class="text-gray-500 text-xs mb-1.5 dark:text-gray-400 p-4"> Anda tidak mempunyai
+                                pemberitahuan
+                                baru </p>
                     @endforelse
                 </div>
                 <a href="#"

@@ -38,6 +38,7 @@ class PermohonanMasuk extends Component
         }
 
         $status->save();
+        $permohonanLayanan->verified_at = now();
         $permohonanLayanan->save();
 
         Notification::send($this->user, new PermohonanLayananUpdate($permohonanLayanan));

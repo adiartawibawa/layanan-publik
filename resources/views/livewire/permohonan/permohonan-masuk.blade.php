@@ -137,15 +137,17 @@
                             <div class="flex items-center justify-end w-full gap-2">
                                 <x-button size="small" type="secondary"
                                     @click="activeTab = 1">Sebelumnya</x-button>
-                                @if (!$permohonan->is_valid)
-                                    <x-button size="small" color="green"
-                                        wire:click="isValid(true)">Valid</x-button>
-                                    <x-button size="small" color="red" wire:click="isValid(false)">Tidak
-                                        Valid</x-button>
-                                @else
-                                    <x-button size="small" color="indigo" wire:click="proses()">
-                                        Proses
-                                    </x-button>
+                                @if ($permohonan->verified_at == null)
+                                    @if (!$permohonan->is_valid)
+                                        <x-button size="small" color="green"
+                                            wire:click="isValid(true)">Valid</x-button>
+                                        <x-button size="small" color="red" wire:click="isValid(false)">Tidak
+                                            Valid</x-button>
+                                    @else
+                                        <x-button size="small" color="indigo" wire:click="proses()">
+                                            Proses
+                                        </x-button>
+                                    @endif
                                 @endif
                             </div>
                         </div>

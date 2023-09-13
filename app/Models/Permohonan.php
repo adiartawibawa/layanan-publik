@@ -31,6 +31,16 @@ class Permohonan extends Model
         return $this->hasMany(StatusPermohonan::class, 'permohonan_id');
     }
 
+    public function latestStatus()
+    {
+        return $this->hasOne(StatusPermohonan::class)->latest('created_at');
+    }
+
+    public function scopeWithLatestStatus($query)
+    {
+        return $query->with(['latestStatus']);
+    }
+
     public function detail(): HasMany
     {
         return $this->hasMany(DetailPermohonan::class, 'permohonan_id');
