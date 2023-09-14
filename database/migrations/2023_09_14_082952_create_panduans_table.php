@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('panduans', function (Blueprint $table) {
             $table->id();
+            $table->string('jenis');
             $table->tinyInteger('step');
             $table->string('title');
             $table->text('content');

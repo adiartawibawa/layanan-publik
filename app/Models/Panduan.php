@@ -11,5 +11,5 @@ class Panduan extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    protected $fillable = ['title', 'content', 'image', 'file', 'step'];
+    protected $fillable = ['jenis', 'title', 'content', 'image', 'file', 'step'];
 }
