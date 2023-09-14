@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\LayananController;
+use App\Http\Controllers\Admin\PanduanController;
 use App\Http\Controllers\Admin\PermohonanController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\UsersController;
@@ -25,4 +26,7 @@ Route::middleware('role:Admin')->prefix('admin')->name('admin.')->group(function
     Route::get('setting/remove/{id}', [SettingController::class, 'remove'])->name('setting.update');
     Route::get('setting', [SettingController::class, 'index'])->name('setting.update');
     Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
+
+    // Panduan
+    Route::get('panduan', [PanduanController::class, 'index'])->name('panduan');
 });
