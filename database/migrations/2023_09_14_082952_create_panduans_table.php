@@ -13,9 +13,11 @@ return new class extends Migration
     {
         Schema::create('panduans', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('deskkripsi');
-            $table->string('image');
+            $table->tinyInteger('step');
+            $table->string('title');
+            $table->text('content');
+            $table->string('image')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
         });
