@@ -10,9 +10,41 @@ class PanduanAplikasi extends Component
 {
     use WithFileUploads;
 
-    public $panduans;
+    public $categories;
+    public $selectedCategory = null;
+    public $panduans, $panduan;
     public $title, $content, $image, $document, $step;
     public $panduanId;
+
+    public function mount($categories)
+    {
+        $this->categories = $categories;
+    }
+
+    public function updatedSelectedCategory()
+    {
+        $panduan = Panduan::where('jenis', '=', $this->selectedCategory)->get();
+
+        switch ($this->selectedCategory) {
+            case 'register':
+                $title = 'Register';
+                break;
+            case 'ambil_berkas':
+                $title = 'Pengambilan Berkas';
+                break;
+            case 'ajuan_mohon':
+                $title = 'Pengajuan Permohonan';
+                break;
+            default:
+                # code...
+                break;
+        }
+
+        return $this->panduan = [
+            'panduan' => $panduan,
+            'title' => $title
+        ];
+    }
 
     public function save()
     {

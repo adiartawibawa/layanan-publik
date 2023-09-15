@@ -21,7 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('landing');
 
-Route::view('/panduan/registrasi', 'page.panduan-registrasi')->name('panduan.registrasi');
+Route::get('/panduan/registrasi', [PageController::class, 'panduanRegistrasi'])->name('panduan.registrasi');
 Route::get('/panduan/permohonan', [PageController::class, 'panduanMohon'])->name('panduan.permohonan');
 Route::get('/panduan/ambil-berkas', [PageController::class, 'panduanAmbilBerkas'])->name('panduan.berkas');
 Route::view('/check/permohonan', 'page.cek-permohonan')->name('cek.permohonan');

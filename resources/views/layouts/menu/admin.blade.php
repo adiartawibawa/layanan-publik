@@ -11,5 +11,5 @@
     {{ __('Pengaturan Aplikasi') }}
 </x-nav-link>
 <x-nav-link :href="route('admin.panduan')" :active="request()->is('admin/panduan*') || request()->is('admin/panduan*')">
-    {{ __('Panduan') }}
+    {{ __('Panduan Aplikasi') }}
 </x-nav-link>

@@ -20,4 +20,11 @@ class PageController extends Controller
 
         return view('page.panduan-ambil-berkas', compact('panduanAmbilBerkas'));
     }
+
+    public function panduanRegistrasi()
+    {
+        $panduanRegistrasis = Panduan::all();
+
+        return view('page.panduan-registrasi', compact('panduanRegistrasis'));
+    }
 }

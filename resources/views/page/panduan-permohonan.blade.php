@@ -105,7 +105,10 @@
                         @endif
                     @endif
                 @empty
-                    belum ada panduan
+                    <div
+                        class="mb-8 lg:mb-16 text-sm font-medium text-center text-gray-500/90 dark:text-white md:text-base">
+                        Panduan belum tersedia
+                    </div>
                 @endforelse
             </div>
         </div>

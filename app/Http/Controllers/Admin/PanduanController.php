@@ -9,6 +9,12 @@ class PanduanController extends Controller
 {
     public function index()
     {
-        return view('admin.panduan.index');
+        $categories = collect([
+            ['name' => 'register', 'label' => 'Panduan Register'],
+            ['name' => 'ambil_berkas', 'label' => 'Panduan Pengambilan Berkas'],
+            ['name' => 'ajuan_mohon', 'label' => 'Panduan Pengajuan Permohonan']
+        ]);
+
+        return view('admin.panduan.index', compact('categories'));
     }
 }
