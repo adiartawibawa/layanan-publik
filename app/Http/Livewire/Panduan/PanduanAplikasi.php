@@ -12,8 +12,11 @@ class PanduanAplikasi extends Component
 
     public $categories;
     public $selectedCategory = null;
-    public $panduans, $panduan;
-    public $title, $content, $image, $document, $step;
+    public $headerCard;
+    public $panduans = [];
+    public $step = 0;
+    public $title, $content;
+    public $image, $document = null;
     public $panduanId;
 
     public function mount($categories)
@@ -23,32 +26,37 @@ class PanduanAplikasi extends Component
 
     public function updatedSelectedCategory()
     {
-        $panduan = Panduan::where('jenis', '=', $this->selectedCategory)->get();
-
         switch ($this->selectedCategory) {
             case 'register':
-                $title = 'Register';
+                $this->headerCard = 'Register';
                 break;
             case 'ambil_berkas':
-                $title = 'Pengambilan Berkas';
+                $this->headerCard = 'Pengambilan Berkas';
                 break;
             case 'ajuan_mohon':
-                $title = 'Pengajuan Permohonan';
+                $this->headerCard = 'Pengajuan Permohonan';
                 break;
             default:
-                # code...
+                $this->headerCard = '';
                 break;
         }
 
-        return $this->panduan = [
-            'panduan' => $panduan,
-            'title' => $title
-        ];
+        $this->getPanduan($this->selectedCategory);
+
+        $this->countLastStep($this->selectedCategory);
+    }
+
+    public function countLastStep($selectedCategory)
+    {
+        $step = Panduan::where('jenis', $selectedCategory)->latest()->first();
+
+        $this->step = ($step != null) ? ++$step->step : 1;
     }
 
     public function save()
     {
         $params = $this->validate([
+            'selectedCategory' => 'required',
             'title' => 'required',
             'content' => 'required',
             'image' => 'required',
@@ -59,6 +67,7 @@ class PanduanAplikasi extends Component
         if ($this->panduanId == "") {
 
             $panduan = Panduan::create([
+                'jenis' => $this->selectedCategory,
                 'title' => $params['title'],
                 'content' => $params['content'],
                 'step' => $params['step'],
@@ -78,6 +87,7 @@ class PanduanAplikasi extends Component
         }
 
         $this->resetForm();
+        $this->updatedSelectedCategory();
     }
 
     private function uploadFile($panduan, $media, $collection)
@@ -91,6 +101,7 @@ class PanduanAplikasi extends Component
     public function update($id, $params)
     {
         $panduan = Panduan::findOrFail($id);
+        $panduan->jenis = $this->selectedCategory;
         $panduan->title = $params['title'];
         $panduan->content = $params['content'];
         $panduan->step = $params['step'];
@@ -104,20 +115,18 @@ class PanduanAplikasi extends Component
         $this->content = '';
         $this->image = null;
         $this->document = null;
-        $this->step = '';
+        $this->step = ++$this->step;
     }
 
-    public function getPanduan()
+    public function getPanduan($jenis)
     {
-        $this->panduans = Panduan::all();
+        $this->panduans = Panduan::where('jenis', $jenis)->get();
 
         return $this->panduans;
     }
 
     public function render()
     {
-        return view('livewire.panduan.panduan-aplikasi', [
-            'panduans' => $this->getPanduan(),
-        ]);
+        return view('livewire.panduan.panduan-aplikasi');
     }
 }

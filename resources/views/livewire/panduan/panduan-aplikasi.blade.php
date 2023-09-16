@@ -33,10 +33,6 @@
                         <div>
                             <x-textarea wire:model="content" name="content" label="Deskripsi panduan" required="true" />
                         </div>
-                        {{-- <div>
-                            <x-filepicker wire:model="file" name="file" max_file_size="1" accepted_file_types=".pdf"
-                                placeholder="Tambahkan file *.pdf jika diperlukan" />
-                        </div> --}}
                         <div>
                             <input type="file" wire:model="document" accept=".pdf">
                             @error('file')
@@ -51,10 +47,19 @@
             </div>
         </x-card>
 
-        <div>
-            <x-card title="Panduan Aplikasi" class="w-full">
-                <div class="my-4 w-full">
-                    <ol class="relative border-l border-gray-200 dark:border-gray-700">
+        <x-card title="Panduan {{ $headerCard }}" class="w-1/2">
+            <div class="my-4 w-full">
+                <ol class="relative border-l border-gray-200 dark:border-gray-700">
+                    @if ($selectedCategory == null)
+                        <li class="mb-10 ml-6">
+                            <span
+                                class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-indigo-900">
+                            </span>
+                            <div class="tracking-wide text-sm text-gray-500/90">
+                                Pilih terlebih dahulu kategori panduan yang ingin ditampilkan
+                            </div>
+                        </li>
+                    @else
                         @forelse ($panduans as $item)
                             <li class="mb-10 ml-6">
                                 <span
@@ -64,7 +69,7 @@
                                 <img src="{{ $item->image }}"
                                     class="object-cover object-center h-36 w-full max-w-full rounded-lg shadow-md"
                                     alt="{{ $item->title }}">
-                                <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                                <h3 class="flex items-center my-2 text-lg font-semibold text-gray-900 dark:text-white">
                                     {{ $item->title }}
                                 </h3>
                                 <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
@@ -84,14 +89,14 @@
                                 <span
                                     class="absolute flex items-center justify-center w-6 h-6 bg-indigo-100 rounded-full -left-3 ring-8 ring-white dark:ring-gray-900 dark:bg-indigo-900">
                                 </span>
-                                <div class="tracking-wide text-sm text-gray-500/90">Anda belum membuat panduan mengenai
-                                    penggunaan
-                                    aplikasi</div>
+                                <div class="tracking-wide text-sm text-gray-500/90">
+                                    Anda belum membuat panduan mengenai penggunaan aplikasi
+                                </div>
                             </li>
                         @endforelse
-                    </ol>
-                </div>
-            </x-card>
-        </div>
+                    @endif
+                </ol>
+            </div>
+        </x-card>
     </section>
 </div>
