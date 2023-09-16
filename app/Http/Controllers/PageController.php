@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Panduan;
+use App\Models\Permohonan;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+
+    public function checkPermohonan(Request $request)
+    {
+        $kodePermohonan = $request->kode;
+
+        return view('page.check-permohonan', compact('kodePermohonan'));
+    }
+
     public function panduanMohon()
     {
         $panduanMohons = Panduan::where('jenis', 'ajuan_mohon')->get();

@@ -7,7 +7,7 @@
             <p class="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
                 {{ $setting['app_description'] }}
             </p>
-            <a href="#"
+            <a href="{{ route('daftar.layanan') }}"
                 class="inline-flex items-center justify-center px-5 py-3 mr-3 text-base font-medium text-center text-white rounded-lg bg-indigo-700 hover:bg-indigo-800 focus:ring-4 focus:ring-indigo-300 dark:focus:ring-indigo-900">
                 Ajukan Permohonan
                 <x-icon name="ticket" class="w-5 h-5 ml-2 -mr-1" />

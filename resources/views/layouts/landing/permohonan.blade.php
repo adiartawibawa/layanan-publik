@@ -5,9 +5,11 @@
                 Pantau Permohonan Anda
             </h2>
             <p class="mb-6 font-light text-gray-500 dark:text-gray-400 md:text-lg">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, optio.
+                Silahkan masukkan kode permohonan Anda
             </p>
-            <x-input name="permohonan" label="permohonan" />
+            <form action="{{ route('check.permohonan') }}" method="GET">
+                <x-input name="kode" label="Masukan Kode Permohonan Anda" />
+            </form>
         </div>
     </div>
 </section>

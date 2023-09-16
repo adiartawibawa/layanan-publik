@@ -29,7 +29,7 @@
                 </a>
             </div>
             <div class="group w-full md:w-1/5">
-                <a href="{{ route('cek.permohonan') }}" class="flex flex-col space-y-2 justify-center items-center">
+                <a href="{{ route('check.permohonan') }}" class="flex flex-col space-y-2 justify-center items-center">
                     <x-icon name="qr-code" class="w-14 h-14 group-hover:hover:scale-125 duration-300"></x-icon>
                     <p
                         class="text-center font-bold text-xl bg-clip-text group-hover:text-transparent group-hover:bg-gradient-to-tr group-hover:from-purple-400 group-hover:to-pink-600">
