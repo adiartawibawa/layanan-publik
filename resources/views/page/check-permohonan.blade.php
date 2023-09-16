@@ -10,7 +10,9 @@
                         Silahkan masukkan kode permohonan Anda
                     </p>
                     <form action="{{ route('check.permohonan') }}" method="GET">
-                        <x-input name="kode" label="Masukan Kode Permohonan Anda" />
+                        <x-input name="kode"
+                            label="{{ $kodePermohonan != '' ? 'Kode Permohonan Anda' : 'Masukan Kode Permohonan Anda' }}"
+                            selected_value="{{ $kodePermohonan }}" />
                     </form>
                 </div>
             </div>

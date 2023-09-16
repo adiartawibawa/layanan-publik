@@ -147,7 +147,7 @@
                             src="https://opendoodles.s3-us-west-1.amazonaws.com/clumsy.png" alt="permohonan tidak ditemukan">
                         <div
                             class="p-6 text-sm md:text-md xl:text-xl md:font-extrabold leading-tight text-gray-600/90 dark:text-white text-center">
-                            Permohonan tidak ditemukan
+                            Kode permohonan {{ $kodePermohonan }} tidak ditemukan
                         </div>
                     </div>
                 @endforelse
