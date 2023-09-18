@@ -26,7 +26,7 @@ class Layanan extends Model
         return $this->morphMany(Ketentuan::class, 'ketentuan', 'ketentuan_type', 'ketentuan_id');
     }
 
-    public function permohononans(): HasMany
+    public function permohonans(): HasMany
     {
         return $this->hasMany(Permohonan::class, 'layanan_id');
     }

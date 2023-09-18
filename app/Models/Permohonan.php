@@ -60,4 +60,13 @@ class Permohonan extends Model
     {
         return Carbon::parse($this->attributes['updated_at'])->format('d, M Y H:i:s');
     }
+
+    public function scopeMonthlyCounts($query)
+    {
+        return $query->selectRaw("DATE_FORMAT(created_at, '%b') as bulan")
+            ->selectRaw("count(*) as total")
+            ->groupBy('bulan')
+            ->orderBy('bulan', 'ASC')
+            ->pluck('total', 'bulan');
+    }
 }
