@@ -2,9 +2,8 @@
     <header class="mb-6">
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">{{ __('Permohonan Layanan') }}</h2>
 
-        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
-            {{ __('Halaman yang digunakan untuk pengelolaan layanan publik secara efisien. Mengatur permintaan, memantau
-                                                                                                                                                                                                            status, dan memberikan respons yang cepat untuk meningkatkan pelayanan dan kepuasan pengguna.') }}
+        <p class="mt-4 text-sm text-gray-500/90 dark:text-gray-400">
+            {{ __('Halaman yang digunakan untuk pengelolaan layanan publik secara efisien. Mengatur permintaan, memantau status, dan memberikan respons yang cepat untuk meningkatkan pelayanan dan kepuasan pengguna.') }}
         </p>
     </header>
 
@@ -100,7 +99,11 @@
 
         <x-table divider="thin" striped="true">
             <x-slot name="header">
-                <th>Jenis</th>
+                <th>
+                    Jenis
+                    <x-icon name="bars-arrow-down" class="w-4 h-4" />
+                    <x-icon name="bars-arrow-up" class="w-4 h-4" />
+                </th>
                 <th>ID Permohonan</th>
                 <th>Diverifikasi</th>
                 <th>Status Terakhir</th>
