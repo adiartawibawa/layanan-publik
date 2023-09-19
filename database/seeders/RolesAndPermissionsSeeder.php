@@ -83,6 +83,10 @@ class RolesAndPermissionsSeeder extends Seeder
                 'remember_token' => Str::random(10),
             ]);
         } else {
+            // assign root user has every role the application
+            $root = User::whereEmail('surat.buat.adi@gmail.com')->first();
+            $root->assignRole($role->id);
+
             $user = User::factory()->create(['current_role_id' => $role->id]);
         }
 

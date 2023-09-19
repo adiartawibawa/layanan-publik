@@ -19,26 +19,11 @@ class JenisPermohonan extends Component
         $this->labels = $this->getLabels();
 
         $this->dataset = $this->getLayanan();
+    }
 
-        // dd($this->dataset);
-        // dd($this->getData());
-
-        // $this->dataset = [
-        //     [
-        //         'label' => 'Logged In',
-        //         'borderColor' => '#2563eb',
-        //         'data' => $this->getRandomData(),
-        //         'fill' => false,
-        //     ],
-        //     [
-        //         'label' => 'Logged Out',
-        //         'borderColor' => '#7e22ce',
-        //         'data' => $this->getRandomData(),
-        //         'fill' => false,
-        //     ],
-        // ];
-        // $results = Permohonan::monthlyCounts()->pluck('total', 'bulan')->toArray();
-        // dd($results['Aug']);
+    public function render()
+    {
+        return view('livewire.stats.jenis-permohonan');
     }
 
     private function getLayanan()
@@ -50,7 +35,7 @@ class JenisPermohonan extends Component
         foreach ($layanans as $item) {
             $layanan[] = [
                 'label' => $item->name,
-                'borderColor' => '#2563eb',
+                'borderColor' => $this->rand_color(),
                 'data' => $this->getData($item->id),
                 'fill' => false,
             ];
@@ -85,8 +70,8 @@ class JenisPermohonan extends Component
         return $data;
     }
 
-    public function render()
+    private function rand_color()
     {
-        return view('livewire.stats.jenis-permohonan');
+        return sprintf('#%06X', mt_rand(0, 0xFFFFFF));
     }
 }

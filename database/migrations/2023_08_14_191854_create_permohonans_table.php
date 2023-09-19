@@ -37,7 +37,8 @@ return new class extends Migration
             $table->string('mohon_key');
             $table->string('name');
             $table->string('string_value')->nullable();
-            $table->string('file_value')->nullable();
+            $table->string('foto_value')->nullable();
+            $table->string('dokumen_value')->nullable();
             $table->longText('text_value')->nullable();
             $table->boolean('boolean_value')->nullable();
             $table->bigInteger('integer_value')->nullable();
@@ -53,8 +54,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('permohonan');
         Schema::dropIfExists('status_permohonan');
         Schema::dropIfExists('detail_permohonan');
+        Schema::dropIfExists('permohonan');
     }
 };

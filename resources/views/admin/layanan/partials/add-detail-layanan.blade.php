@@ -154,7 +154,8 @@
                         <option selected>Tipe Formulir</option>
                         <option value="string">Jawaban singkat</option>
                         <option value="text">Paragraf</option>
-                        <option value="file">File</option>
+                        <option value="foto">Foto</option>
+                        <option value="dokumen">Dokumen/pdf</option>
                         <option value="date">Tanggal</option>
                     </select>
                 </div>
@@ -203,7 +204,8 @@
                         <option selected>Tipe Formulir</option>
                         <option value="string">Jawaban singkat</option>
                         <option value="text">Paragraf</option>
-                        <option value="file">File</option>
+                        <option value="foto">Foto</option>
+                        <option value="dokumen">Dokumen/pdf</option>
                         <option value="date">Tanggal</option>
                     </select>
                 </div>

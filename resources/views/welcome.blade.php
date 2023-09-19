@@ -43,15 +43,15 @@
                     convallis consequat. Phasellus fringilla tempor nibh, non fermentum purus tempus in. Morbi gravida
                     tempor bibendum.
                 </p>
-                <div class="bg-slate-100/90 p-4 rounded-lg flex flex-col-reverse md:flex-row gap-4 w-full">
-                    <div class="flex flex-col gap-4 w-full md:w-1/3">
-                        @livewire('stats.permohonan-stats')
-                        @livewire('stats.permohonan-proses')
-                        @livewire('stats.permohonan-selesai')
-                    </div>
-                    <div class="w-full md:w-2/3">
-                        @livewire('stats.jenis-permohonan')
-                    </div>
+            </div>
+            <div class="bg-gray-50 p-4 rounded-lg flex flex-col-reverse md:flex-row gap-4 w-full">
+                <div class="flex flex-col gap-4 w-full md:w-1/3">
+                    @livewire('stats.permohonan-stats')
+                    @livewire('stats.permohonan-proses')
+                    @livewire('stats.permohonan-selesai')
+                </div>
+                <div class="w-full md:w-2/3">
+                    @livewire('stats.jenis-permohonan')
                 </div>
             </div>
         </div>

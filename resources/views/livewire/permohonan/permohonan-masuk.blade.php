@@ -85,7 +85,14 @@
                                                 default_date="{{ $item[$item->mohon_type . '_value'] }}" />
                                         @break
 
-                                        @case('file')
+                                        @case('foto')
+                                            <div class="py-8">
+                                                <label for="{{ $item->mohon_key }}">{{ $item->name }}</label>
+                                                <x-filepicker name="{{ $item->mohon_key }}" id="{{ $item->mohon_key }}" />
+                                            </div>
+                                        @break
+
+                                        @case('dokumen ')
                                             <div class="py-8">
                                                 <label for="{{ $item->mohon_key }}">{{ $item->name }}</label>
                                                 <x-filepicker name="{{ $item->mohon_key }}" id="{{ $item->mohon_key }}" />
@@ -116,22 +123,55 @@
                         <div class="text-sm text-gray-500 dark:text-gray-400">
                             @foreach ($permohonan->detail as $item)
                                 @if ($item->category == 'prasyarat')
-                                    @if ($item->mohon_type == 'file')
-                                        <div
-                                            class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 md:h-80 mb-8">
-                                            <img src="{{ $item[$item->mohon_type . '_value'] }}"
-                                                alt="{{ $item->mohon_key }}"
-                                                class="absolute inset-0 h-full w-full object-none object-center transition duration-200 group-hover:scale-110">
+                                    @switch($item->mohon_type)
+                                        @case('string')
+                                            <x-input type="text" label="{{ $item->name }}" name="{{ $item->mohon_key }}"
+                                                id="{{ $item->mohon_key }}"
+                                                value="{{ $item[$item->mohon_type . '_value'] }}" />
+                                        @break
+
+                                        @case('text')
+                                            <x-textarea label="{{ $item->name }}" name="{{ $item->mohon_key }}"
+                                                id="{{ $item->mohon_key }}"
+                                                selected_value="{{ $item[$item->mohon_type . '_value'] }}" />
+                                        @break
+
+                                        @case('date')
+                                            <x-datepicker placeholder="{{ $item->name }}" type="single"
+                                                name="{{ $item->mohon_key }}" id="{{ $item->mohon_key }}"
+                                                default_date="{{ $item[$item->mohon_type . '_value'] }}" />
+                                        @break
+
+                                        @case('foto')
                                             <div
-                                                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                                                class="group relative flex h-48 items-end overflow-hidden rounded-lg bg-gray-100 md:h-80 mb-8">
+                                                <img src="{{ $item[$item->mohon_type . '_value'] }}"
+                                                    alt="{{ $item->mohon_key }}"
+                                                    class="absolute inset-0 h-full w-full object-none object-center transition duration-200 group-hover:scale-110">
+                                                <div
+                                                    class="pointer-events-none absolute inset-0 bg-gradient-to-t from-gray-800 via-transparent to-transparent opacity-50">
+                                                </div>
+                                                <div class="relative ml-4 mb-3 inline-block md:ml-5">
+                                                    <x-button tag="a" color="red"
+                                                        href="{{ $item[$item->mohon_type . '_value'] }}" target="_blank"
+                                                        size="tiny">View</x-button>
+                                                </div>
                                             </div>
-                                            <div class="relative ml-4 mb-3 inline-block md:ml-5">
-                                                <x-button tag="a" color="red"
-                                                    href="{{ $item[$item->mohon_type . '_value'] }}" target="_blank"
-                                                    size="tiny">View</x-button>
+                                        @break
+
+                                        @case('dokumen ')
+                                            <div class="py-8">
+                                                <label for="{{ $item->mohon_key }}">{{ $item->name }}</label>
+                                                <a href="#"
+                                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-indigo-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-200 focus:text-indigo-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700">
+                                                    <x-icon name="document-arrow-down" class="w-3.5 h-3.5 mr-2.5" />
+                                                    {{ $item->name }}
+                                                </a>
                                             </div>
-                                        </div>
-                                    @endif
+                                        @break
+
+                                        @default
+                                    @endswitch
                                 @endif
                             @endforeach
                             <div class="flex items-center justify-end w-full gap-2">

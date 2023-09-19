@@ -110,8 +110,12 @@ class PermohonanController extends Controller
         $detail->name = $ketentuan->name;
         $detail->save();
 
-        if ($ketentuan->type == 'file' && $permohonanValue) {
-            $permohonanValue = $this->uploadFile($detail, $permohonanValue);
+        if ($ketentuan->type == 'foto' && $permohonanValue) {
+            $permohonanValue = $this->uploadFile($detail, $permohonanValue, 'images');
+        }
+
+        if ($ketentuan->type == 'dokumen' && $permohonanValue) {
+            $permohonanValue = $this->uploadFile($detail, $permohonanValue, 'document');
         }
 
         $detail[$ketentuan->type . '_value'] = $permohonanValue;
@@ -119,12 +123,12 @@ class PermohonanController extends Controller
         return $detail->save();
     }
 
-    private function uploadFile($detail, $permohonanValue)
+    private function uploadFile($detail, $permohonanValue, $collection)
     {
-        $detail->clearMediaCollection('images');
-        $detail->addMediaFromRequest($detail->mohon_key)->toMediaCollection('images');
+        $detail->clearMediaCollection($collection);
+        $detail->addMediaFromRequest($detail->mohon_key)->toMediaCollection($collection);
 
-        return $detail->getFirstMedia('images')->getUrl();
+        return $detail->getFirstMedia($collection)->getUrl();
     }
 
     /**
