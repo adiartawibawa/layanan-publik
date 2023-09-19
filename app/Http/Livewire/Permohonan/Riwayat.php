@@ -22,22 +22,6 @@ class Riwayat extends Component
         return $details;
     }
 
-    // public function getPermohonan($kodePermohonan)
-    // {
-    //     $permohonan = Permohonan::where('kode_mohon', $kodePermohonan)->first();
-
-    //     return $permohonan->id;
-    // }
-
-    // public function statusPermohonan($kodePermohonan)
-    // {
-    //     $idPermohonan = $this->getPermohonan($kodePermohonan);
-
-    //     $status =  StatusPermohonan::wherePermohonanId($idPermohonan)->latest()->get();
-
-    //     return $status;
-    // }
-
     public function render()
     {
         return view('livewire.permohonan.riwayat', [
