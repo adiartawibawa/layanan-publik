@@ -171,14 +171,12 @@
                             <td>{{ $item->created_at->diffForHumans() }}</td>
                             <td>
                                 <div class="inline-flex items-center justify-center gap-2">
-                                    <a href="{{ route('admin.users.show', $item->id) }}">
-                                        <x-icon name="eye" class="h-5 w-5 cursor-pointer hover:text-indigo-800" />
-                                    </a>
                                     @if ($item->show_edit_remove_btn)
-                                        <a href="{{ route('admin.users.edit', $item->id) }}">
+                                        <button onclick="Livewire.emit('openModal', 'root.user.edit-user')"
+                                            wire:click="edit('{{ $item->id }}')">
                                             <x-icon name="pencil-square"
                                                 class="h-5 w-5 cursor-pointer hover:text-indigo-800" />
-                                        </a>
+                                        </button>
                                         <a href="{{ route('admin.users.destroy', ['user' => $item->id]) }}"
                                             onclick="event.preventDefault(); if (confirm('Do you want to remove this?')) {
                                             document.getElementById('delete-role-{{ $item->id }}').submit();

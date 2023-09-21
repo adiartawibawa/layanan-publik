@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Root;
+namespace App\Http\Livewire\Root\User;
 
 use App\Models\Role;
 use App\Models\User;
@@ -19,9 +19,11 @@ class DataUser extends Component
     public $sortColumnName = 'created_at';
     public $sortDirection = 'desc';
 
+    public $selectedId;
+
     public function render()
     {
-        return view('livewire.root.data-user', [
+        return view('livewire.root.user.data-user', [
             'users' => $this->users,
             'roles' => $this->allRoles()
         ]);
@@ -116,5 +118,11 @@ class DataUser extends Component
     public function swapSortDirection()
     {
         return $this->sortDirection === 'asc' ? 'desc' : 'asc';
+    }
+
+    public function edit($id)
+    {
+        $this->selectedId = $id;
+        $this->emit('selectedId', $this->selectedId);
     }
 }

@@ -6,6 +6,6 @@
     </x-slot>
 
     <div class="py-12">
-        @livewire('root.data-user')
+        @livewire('root.user.data-user')
     </div>
 </x-app-layout>
