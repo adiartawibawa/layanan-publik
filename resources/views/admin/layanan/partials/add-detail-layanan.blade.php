@@ -18,7 +18,7 @@
                             <p class="text-sm text-gray-900">{{ $item->desc }}</p>
 
                         </div>
-                        <a href="{{ route('admin.pelayanan') }}"
+                        <a href="{{ route('admin.layanan.index') }}"
                             class="inline-flex justify-center items-center space-x-2 text-xs hover:cursor-pointer hover:text-indigo-500">
                             <x-icon name="arrow-left" class="h-4 w-4" />
                             <span>Kembali</span>

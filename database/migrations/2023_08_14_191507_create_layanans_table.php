@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->char('estimasi');
             $table->text('desc')->nullable();
+            $table->timestamps();
         });
 
         Schema::create('ketentuan', function (Blueprint $table) {

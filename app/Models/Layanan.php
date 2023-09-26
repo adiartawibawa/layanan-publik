@@ -30,4 +30,13 @@ class Layanan extends Model
     {
         return $this->hasMany(Permohonan::class, 'layanan_id');
     }
+
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term) {
+            $query->where('name', 'like', $term)
+                ->orWhere('desc', 'like', $term);
+        });
+    }
 }

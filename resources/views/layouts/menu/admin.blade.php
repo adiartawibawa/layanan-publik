@@ -4,7 +4,7 @@
 <x-nav-link :href="route('admin.permohonan.index')" :active="request()->is('admin/permohonan*') || request()->is('admin/permohonan*')">
     {{ __('Permohonan') }}
 </x-nav-link>
-<x-nav-link :href="route('admin.pelayanan')" :active="request()->is('admin/pelayanan*')">
+<x-nav-link :href="route('admin.layanan.index')" :active="request()->is('admin/layanan*')">
     {{ __('Layanan') }}
 </x-nav-link>
 <x-nav-link :href="route('admin.users.index')" :active="request()->is('admin/users*')">

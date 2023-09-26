@@ -13,7 +13,8 @@ Route::middleware('role:Admin')->prefix('admin')->name('admin.')->group(function
 
     Route::resource('users', UsersController::class);
 
-    Route::get('/pelayanan', [LayananController::class, 'index'])->name('pelayanan');
+    // Layanan
+    Route::view('layanan', 'admin.layanan.index')->name('layanan.index');
     Route::post('/pelayanan', [LayananController::class, 'store'])->name('pelayanan.store');
     Route::get('/pelayanan/detail/{layanan}', [LayananController::class, 'getDetailLayanan'])->name('detail.pelayanan');
     Route::post('/pelayanan/detail/{layanan}', [LayananController::class, 'addDetailLayanan'])->name('detail.pelayanan.add');
