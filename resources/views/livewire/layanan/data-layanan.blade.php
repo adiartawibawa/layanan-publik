@@ -137,7 +137,7 @@
                                     onclick="Livewire.emit('openModal', 'layanan.form-layanan', {{ json_encode(['layanan' => $item->id]) }})">
                                     <x-icon name="pencil-square" class="h-5 w-5 cursor-pointer hover:text-indigo-800" />
                                 </button>
-                                <a href="{{ route('admin.detail.pelayanan', $item->id) }}" title="Detail">
+                                <a href="{{ route('admin.detail.layanan', $item->id) }}" title="Detail">
                                     <x-icon name="document-text"
                                         class="h-5 w-5 cursor-pointer hover:text-indigo-800"></x-icon>
                                 </a>
@@ -151,7 +151,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4">
+                        <td colspan="5">
                             <div class="flex flex-col items-center justify-center">
                                 <img src="{{ asset('img/empty.png') }}" class="h-52 w-auto" alt="Empty Data">
                                 <p>Anda belum memiliki layanan.</p>

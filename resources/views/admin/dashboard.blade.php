@@ -12,6 +12,27 @@
                     <x-card
                         class="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
                         <span
+                            class="absolute top-10 z-0 h-20 w-20 rounded-full bg-teal-500 transition-all duration-300 group-hover:scale-[10]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <a href="{{ route('admin.permohonan.index') }}">
+                                <span
+                                    class="grid h-20 w-20 place-items-center rounded-full bg-teal-500 transition-all duration-300 group-hover:bg-teal-400">
+                                    <x-icon name="inbox-arrow-down" class="h-10 w-10 text-white transition-all"></x-icon>
+                                </span>
+                                <div
+                                    class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                    <h2 class="text-xl font-semibold">Permohonan Layanan</h2>
+                                    <p>
+                                        Mengatur permintaan, memantau status, dan memberikan respons yang cepat untuk
+                                        meningkatkan pelayanan dan kepuasan pengguna.
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </x-card>
+                    <x-card
+                        class="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+                        <span
                             class="absolute top-10 z-0 h-20 w-20 rounded-full bg-sky-500 transition-all duration-300 group-hover:scale-[10]"></span>
                         <div class="relative z-10 mx-auto max-w-md">
                             <a href="{{ route('admin.layanan.index') }}">
@@ -24,8 +45,7 @@
                                     class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
                                     <h2 class="text-xl font-semibold">Layanan Publik</h2>
                                     <p>
-                                        Mengatur permintaan, memantau status, dan memberikan respons yang cepat untuk
-                                        meningkatkan pelayanan dan kepuasan pengguna.
+                                        Mengatur ketersediaan layanan publik yang dapat ditangani oleh aplikasi.
                                     </p>
                                 </div>
                             </a>
@@ -66,6 +86,7 @@
                                 </span>
                                 <div
                                     class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                    <h2 class="text-xl font-semibold">Pengaturan Aplikasi</h2>
                                     <p>Halaman untuk mengelola pengaturan aplikasi dengan mudah. Mengubah konfigurasi,
                                         manajemen
                                         fitur, dan menganalisis kinerja untuk optimalisasi dan pengembangan yang

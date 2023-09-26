@@ -15,10 +15,10 @@ Route::middleware('role:Admin')->prefix('admin')->name('admin.')->group(function
 
     // Layanan
     Route::view('layanan', 'admin.layanan.index')->name('layanan.index');
-    Route::post('/pelayanan', [LayananController::class, 'store'])->name('pelayanan.store');
-    Route::get('/pelayanan/detail/{layanan}', [LayananController::class, 'getDetailLayanan'])->name('detail.pelayanan');
-    Route::post('/pelayanan/detail/{layanan}', [LayananController::class, 'addDetailLayanan'])->name('detail.pelayanan.add');
-    Route::delete('/pelayanan/detail/{layanan}/{ketentuan}', [LayananController::class, 'deleteDetailLayanan'])->name('detail.pelayanan.destroy');
+    Route::post('/layanan', [LayananController::class, 'store'])->name('layanan.store');
+    Route::get('/layanan/detail/{layanan}', [LayananController::class, 'getDetailLayanan'])->name('detail.layanan');
+    Route::post('/layanan/detail/{layanan}', [LayananController::class, 'addDetailLayanan'])->name('detail.layanan.add');
+    Route::delete('/layanan/detail/{layanan}/{ketentuan}', [LayananController::class, 'deleteDetailLayanan'])->name('detail.layanan.destroy');
 
     // Permohonan Masuk
     Route::get('permohonan/{permohonan}/{notification?}', [PermohonanController::class, 'show'])->name('permohonan.notification');

@@ -53,10 +53,10 @@
                                         </div>
                                         <div class="space-x-2">
                                             <form method="POST"
-                                                action="{{ route('admin.detail.pelayanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}">
+                                                action="{{ route('admin.detail.layanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('admin.detail.pelayanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}"
+                                                <a href="{{ route('admin.detail.layanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}"
                                                     onclick="event.preventDefault();
                                                                 this.closest('form').submit();">
                                                     <x-icon name="trash"
@@ -102,10 +102,10 @@
                                         </div>
                                         <div class="space-x-2">
                                             <form method="POST"
-                                                action="{{ route('admin.detail.pelayanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}">
+                                                action="{{ route('admin.detail.layanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <a href="{{ route('admin.detail.pelayanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}"
+                                                <a href="{{ route('admin.detail.layanan.destroy', ['layanan' => $item->id, 'ketentuan' => $ketentuan->id]) }}"
                                                     onclick="event.preventDefault();
                                                             this.closest('form').submit();">
                                                     <x-icon name="trash"
@@ -126,7 +126,7 @@
         </div>
 
         <x-modal name="formulir-layanan" focusable>
-            <form method="post" action="{{ route('admin.detail.pelayanan.add', $item->id) }}" class="p-6">
+            <form method="post" action="{{ route('admin.detail.layanan.add', $item->id) }}" class="p-6">
                 @csrf
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                     {{ __('Menambahkan Formulir Layanan') }}
@@ -176,7 +176,7 @@
         </x-modal>
 
         <x-modal name="syarat-layanan" focusable>
-            <form method="post" action="{{ route('admin.detail.pelayanan.add', $item->id) }}" class="p-6">
+            <form method="post" action="{{ route('admin.detail.layanan.add', $item->id) }}" class="p-6">
                 @csrf
                 <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                     {{ __('Menambahkan Syarat Layanan') }}
