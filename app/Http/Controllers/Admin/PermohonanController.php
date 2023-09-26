@@ -13,7 +13,9 @@ class PermohonanController extends Controller
      */
     public function index()
     {
-        //
+        $permohonans = Permohonan::all();
+
+        return view('admin.permohonan.index', compact('permohonans'));
     }
 
     /**

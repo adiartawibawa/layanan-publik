@@ -6,7 +6,7 @@
                 <img src="{{ $setting['app_logo'] }}" class="mr-3 h-6 sm:h-9"
                     alt="{{ $setting['application_name'] }} logo" />
                 <span
-                    class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ $setting['application_name'] }}</span>
+                    class="self-center hidden md:block text-xs font-semibold whitespace-nowrap dark:text-white md:text-xl">{{ $setting['application_name'] }}</span>
             </a>
             @if (Route::has('login'))
                 <div class="flex items-center lg:order-2">

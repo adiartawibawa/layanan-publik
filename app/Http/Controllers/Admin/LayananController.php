@@ -14,9 +14,8 @@ class LayananController extends Controller
     public function index()
     {
         $layanans = Layanan::all();
-        $permohonans = Permohonan::all();
 
-        return view('admin.layanan.index', compact('layanans', 'permohonans'));
+        return view('admin.layanan.index', compact('layanans'));
     }
 
     public function store(Request $request)
