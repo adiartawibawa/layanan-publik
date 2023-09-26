@@ -19,7 +19,7 @@
                 aria-labelledby="dropdownNotificationButton">
                 <div
                     class="block px-4 py-2 font-medium text-center text-gray-700 rounded-t-lg bg-gray-50 dark:bg-gray-800 dark:text-white">
-                    Notifications
+                    Pemberitahuan
                 </div>
                 <div class="divide-y divide-gray-100 dark:divide-gray-700">
                     @forelse ($user->unreadNotifications as $notification)
@@ -57,7 +57,7 @@
                                 baru </p>
                     @endforelse
                 </div>
-                <a href="#"
+                {{-- <a href="#"
                     class="block py-2 text-sm font-medium text-center text-gray-900   hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white">
                     <div class="inline-flex items-center ">
                         <svg class="w-4 h-4 mr-2 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -67,7 +67,7 @@
                         </svg>
                         Lihat semua
                     </div>
-                </a>
+                </a> --}}
             </div>
         </x-slot>
     </x-dropdown>
